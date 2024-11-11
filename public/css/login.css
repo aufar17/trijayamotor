@@ -1,3 +1,68 @@
+body {
+    font-family: 'Host Grotesk';
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.left-section {
+    background-image: linear-gradient(to bottom, #133E87, #3A6D8C);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.left-section .logo {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.right-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.login-form {
+    max-width: 700px;
+    width: 100%;
+    background-color: white;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.login-form .form-control {
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    background-color: #133E87;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    /* Warna biru lebih gelap saat hover */
+}
+
 * {
     font-family: 'Host Grotesk';
 }
@@ -21,7 +86,7 @@
 
 .form-control:focus {
     border-bottom: 1px solid #16423c;
-    background-image: linear-gradient(to right, #16423c, #6a9c89);
+    background-image: linear-gradient(to right, #133E87, #6a9c89);
     background-size: 0% 2px;
     background-position: 0 100%;
     background-repeat: no-repeat;
@@ -32,7 +97,6 @@
 
 .form-label {
     position: absolute;
-    font-weight: 600;
     top: 10px;
     left: 0;
     transition: all 0.4s ease;
@@ -45,7 +109,7 @@
 .form-control:not(:placeholder-shown)+.form-label {
     top: -15px;
     font-size: 18px;
-    background-image: linear-gradient(to right, #16423c, #6a9c89);
+    background-image: linear-gradient(to right, #133E87, #6a9c89);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

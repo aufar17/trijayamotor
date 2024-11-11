@@ -11842,15 +11842,15 @@ fieldset:disabled a.btn {
     pointer-events: none;
 }
 
-.btn-primary {
+.btn.btn-primary {
     color: #fff;
-    background-color: #4d83ff;
+    background-color: #2768ff;
     border-color: #4d83ff;
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #2768ff;
+    background-color: #133E87;
     border-color: #1a5fff;
 }
 
@@ -22388,7 +22388,8 @@ select.form-control.border-dark:focus,
 }
 
 .form-group label {
-    font-size: 0.875rem;
+    font-weight: bold;
+    font-size: 15px;
     line-height: 1.4rem;
     vertical-align: top;
     margin-bottom: .5rem;
@@ -22810,8 +22811,8 @@ dl li {
 .table thead th {
     border-top: 0;
     border-bottom-width: 1px;
-    font-weight: 500;
-    font-size: 1rem;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .table thead th i {
@@ -22929,7 +22930,8 @@ dl li {
     border: 1px solid rgba(151, 151, 151, 0.18);
     color: #08113b;
     white-space: nowrap;
-    font-weight: 300;
+    font-weight: 400;
+    font-size: 16px;
     padding: 1.1rem 0.9375rem;
 }
 
@@ -23751,12 +23753,12 @@ dl li {
 @media (min-width: 992px) {
     .sidebar-icon-only .navbar .navbar-brand-wrapper {
         width: 80px;
-        
+
     }
 
     .sidebar-icon-only .navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper {
         margin-right: auto;
-        
+
     }
 
     .sidebar-icon-only .navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .brand-logo {

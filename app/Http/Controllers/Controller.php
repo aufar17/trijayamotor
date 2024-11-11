@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventory;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -18,7 +19,12 @@ class Controller extends BaseController
 
     public function inventory()
     {
-        return view('inventory');
+        $inventories = Inventory::all();
+        $data = [
+            'inventories' => $inventories
+        ];
+
+        return view('inventory', $data);
     }
     public function service()
     {

@@ -9,8 +9,8 @@ use App\Http\Controllers\LoginController;
 //     return view('welcome');
 // }); 
 
-Route::get('/', [Controller::class, 'index'])->name('index');
 Route::get('login', [Controller::class, 'login'])->name('login');
+Route::get('/', [Controller::class, 'index'])->name('index');
 Route::get('inventory', [Controller::class, 'inventory'])->name('inventory');
 Route::get('service', [Controller::class, 'service'])->name('service');
 Route::get('supplier', [Controller::class, 'supplier'])->name('supplier');
@@ -21,3 +21,7 @@ Route::get('supplier', [Controller::class, 'supplier'])->name('supplier');
 
 // Inventory
 Route::get('new-inventory', [InventoryController::class, 'newInventory'])->name('new-inventory');
+Route::post('add-inventory', [InventoryController::class, 'inventoryPost'])->name('inventory-post');
+Route::get('edit-inventory/{id}', [InventoryController::class, 'editInventory'])->name('edit-inventory');
+Route::post('update-inventory', [InventoryController::class, 'inventoryUpdate'])->name('inventory-update');
+Route::post('delete-inventory', [InventoryController::class, 'inventoryDelete'])->name('delete-inventory');

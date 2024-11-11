@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}   ">
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}   ">
 </head>
 
 <body>

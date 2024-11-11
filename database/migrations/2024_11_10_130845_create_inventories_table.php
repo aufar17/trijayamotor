@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
+            $table->integer('code')->unique();
+            $table->string('name');
+            $table->string('description');
+            $table->integer('stock');
+            $table->integer('purchase');
+            $table->integer('sell');
+            $table->string('location');
+            $table->date('entry');
             $table->timestamps();
         });
     }

@@ -28,53 +28,94 @@
               </div>
             </div>
           </div>
+          @if (session('success'))
+          <div class="alert alert-success">
+            {{ session('success') }}
+          </div>
+          @endif
+
+          @if (session('error'))
+          <div class="alert alert-danger">
+            {{ session('error') }}
+          </div>
+          @endif
           <div class="row">
             <div class="col-md-12 stretch-card">
-              <div class="card px-3 py-3" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
-                <button class="btn btn-success d-flex align-items-center justify-content-center gap-2 mb-4 mt-2" style="height: 50px; width: 130px; font-size: 18px;box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
+              <div class="card px-4 py-3" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
+                <a href="{{ route('new-inventory') }}"
+                  class="btn btn-success d-flex align-items-center justify-content-center gap-2 mb-4 mt-2"
+                  style="height: 50px; width: 130px; font-size: 18px;box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
                   <i class="fa-solid fa-plus"></i>
                   <span>New Data</span>
-                </button>
+                </a>
                 <table id="example" class="table table-striped" style="width:100%">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
+                      <th>No</th>
+                      <th>Code</th>
+                      <th>Sparepart</th>
+                      <th>Stock</th>
+                      <th>Sell</th>
+                      <th>Location</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
+                    @forelse ($inventories as $inventory)
+
                     <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011-04-25</td>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $inventory->code }}</td>
+                      <td>{{ $inventory->name }}</td>
+                      <td>{{ $inventory->stock }}</td>
+                      <td>{{ $inventory->SellRupiah }}</td>
+                      <td>{{ $inventory->location }}</td>
                       <td>
                         <a class="btn btn-info" href=""><i class="fa-solid fa-circle-info"></i></a>
-                        <a class="btn btn-warning" href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                        <button class="btn btn-danger" href=""><i class="fa-solid fa-trash"></i></button>
+                        <a class="btn btn-warning" href="{{ route('edit-inventory', ['id' => $inventory->id]) }}"><i
+                            class="fa-solid fa-pen-to-square"></i></a>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"
+                          data-id="{{ $inventory->id }}"><i class="fa-solid fa-trash"></i></button>
                       </td>
                     </tr>
+                    @empty
+                    <tr>
+                      <td colspan="6" class="text-center fw-bold py-3 fs-6">Empty spareparts in warehouse</td>
+                    </tr>
+                    @endforelse
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
         <x-footer></x-footer>
-        <!-- partial -->
       </div>
-      <!-- main-panel ends -->
     </div>
-    <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
+
+
+  {{-- MODAL DELETE --}}
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this sparepart?
+        </div>
+        <div class="modal-footer">
+          <form id="deleteForm" action="{{ route('delete-inventory') }}" method="POST">
+            @csrf
+            <input hidden type="text" name="id" id="productId" value="{{ $inventory->id }}">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- plugins:js -->
   <script src="vendors/base/vendor.bundle.base.js"></script>

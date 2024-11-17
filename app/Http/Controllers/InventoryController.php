@@ -27,6 +27,19 @@ class InventoryController extends Controller
         return view('edit-inventory', $data);
     }
 
+    public function detailInventory($id)
+    {
+        $inventory = Inventory::where('id', $id)->first();
+        if (!$inventory) {
+            return redirect()->route('inventory')->with('error', 'inventory not found');
+        }
+
+        $data = [
+            'inventory' => $inventory,
+        ];
+        return view('detail-inventory', $data);
+    }
+
     public function inventoryPost()
     {
         $inventory = request()->post();

@@ -41,7 +41,7 @@
                         <form class="forms-sample" action="{{ route('inventory-post') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleInputCode1">Code</label>
+                                <label for="exampleInputCode1">Sparepart Code</label>
                                 <input name="code" type="number" class="form-control" id="exampleInputName1"
                                     placeholder="Code">
                             </div>

@@ -52,7 +52,7 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Code</th>
+                      <th>Sparepart Code</th>
                       <th>Sparepart</th>
                       <th>Stock</th>
                       <th>Sell</th>
@@ -71,7 +71,8 @@
                       <td>{{ $inventory->SellRupiah }}</td>
                       <td>{{ $inventory->location }}</td>
                       <td>
-                        <a class="btn btn-info" href=""><i class="fa-solid fa-circle-info"></i></a>
+                        <a class="btn btn-info" href="{{ route('detail-inventory',['id' => $inventory->id]) }}"><i
+                            class="fa-solid fa-circle-info"></i></a>
                         <a class="btn btn-warning" href="{{ route('edit-inventory', ['id' => $inventory->id]) }}"><i
                             class="fa-solid fa-pen-to-square"></i></a>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"

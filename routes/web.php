@@ -25,3 +25,4 @@ Route::post('add-inventory', [InventoryController::class, 'inventoryPost'])->nam
 Route::get('edit-inventory/{id}', [InventoryController::class, 'editInventory'])->name('edit-inventory');
 Route::post('update-inventory', [InventoryController::class, 'inventoryUpdate'])->name('inventory-update');
 Route::post('delete-inventory', [InventoryController::class, 'inventoryDelete'])->name('delete-inventory');
+Route::get('detail-inventory/{id}', [InventoryController::class, 'detailInventory'])->name('detail-inventory');

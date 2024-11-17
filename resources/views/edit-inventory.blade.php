@@ -41,7 +41,7 @@
                         <form class="forms-sample" action="{{ route('inventory-update') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleInputCode1">Code</label>
+                                <label for="exampleInputCode1">Sparepart Code</label>
                                 <input readonly name="code" type="number" class="form-control" id="exampleInputName1"
                                     placeholder="Code" value="{{ $inventory->code }}">
                             </div>

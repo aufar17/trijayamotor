@@ -24,7 +24,7 @@
             <div class="col-md-6 right-section">
                 <div class="login-form">
                     <h2 class="text-center mb-4">SIGN IN</h2>
-                    <form action="{{ route('login-process') }}" method="post">
+                    <form action="" method="post">
                         @csrf
                         <div class="form-group">
                             <input type="text" id="username" name="username" class="form-control" placeholder=" "

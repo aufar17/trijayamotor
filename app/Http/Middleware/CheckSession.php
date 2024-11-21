@@ -14,18 +14,18 @@ class CheckSession
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    // public function handle(Request $request, Closure $next): Response
-    // {
-    //     if ($request->route()->named('login')) {
-    //         if (Session::has('user')) {
-    //             return redirect()->route('index');
-    //         }
-    //     } else {
-    //         if (!Session::has('user')) {
-    //             return redirect()->route('login')->withErrors('Anda harus login terlebih dahulu.');
-    //         }
-    //     }
+    public function handle(Request $request, Closure $next): Response
+    {
+        if (in_array($request->route()->getName(), ['login', 'login-process'])) {
+            if (Session::has('user')) {
+                return redirect()->route('index');
+            }
+        } else {
+            if (!Session::has('user')) {
+                return redirect()->route('login')->withErrors('Anda harus login terlebih dahulu.');
+            }
+        }
 
-    //     return $next($request);
-    // }
+        return $next($request);
+    }
 }

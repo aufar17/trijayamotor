@@ -12,9 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // $middleware->appendToGroup('web', [
-        //     CheckSession::class
-        // ]);
+        $middleware->appendToGroup('web', [
+            CheckSession::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

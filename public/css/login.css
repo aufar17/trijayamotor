@@ -7,7 +7,9 @@ h2 {
 }
 
 .left-section {
-    background-image: linear-gradient(to bottom, #133E87, #3A6D8C);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     color: white;
     display: flex;
     justify-content: center;

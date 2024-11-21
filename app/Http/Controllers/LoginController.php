@@ -10,23 +10,23 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
-    // public function loginProcess(Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'username' => 'required|string',
-    //         'password' => 'required|min:6',
-    //     ]);
+    public function loginProcess(Request $request)
+    {
+        $validatedData = $request->validate([
+            'username' => 'required|string',
+            'password' => 'required',
+        ]);
 
-    //     $user = User::where('username', $validatedData['username'])->first();
+        $user = User::where('username', $validatedData['username'])->first();
 
-    //     if ($user && Hash::check($validatedData['password'], $user->password)) {
-    //         session(['login' => true, 'user_id' => $user->id, 'user_name' => $user->username, 'user_email' => $user->email]);
+        if ($user && Hash::check($validatedData['password'], $user->password)) {
+            Session::put('user', $user);
 
-    //         return redirect()->intended('index');
-    //     }
+            return redirect()->route('index');
+        }
 
-    //     return back()->withErrors([
-    //         'username' => 'Username atau password salah.',
-    //     ])->withInput($request->only('username'));
-    // }
+        return back()->withErrors([
+            'username' => 'Username atau password salah.',
+        ])->withInput($request->only('username'));
+    }
 }

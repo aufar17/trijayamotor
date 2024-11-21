@@ -18,13 +18,13 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 left-section">
+            <div class="col-md-6 left-section" style="background-image: url('images/bg-login.png')">
                 <img class="logo" src="{{ asset('images/logo.png') }}" alt="">
             </div>
             <div class="col-md-6 right-section">
                 <div class="login-form">
                     <h2 class="text-center mb-4">SIGN IN</h2>
-                    <form action="" method="post">
+                    <form action="{{ route('login-process') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <input type="text" id="username" name="username" class="form-control" placeholder=" "

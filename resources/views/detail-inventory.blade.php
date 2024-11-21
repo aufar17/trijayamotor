@@ -86,30 +86,29 @@
 
 
     <!-- plugins:js -->
-    <script src="vendors/base/vendor.bundle.base.js"></script>
+    <script src="{{ url('vendors/base/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page-->
-    <script src="vendors/chart.js/Chart.min.js"></script>
-    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
-    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="{{ url('vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ url('vendors/datatables.net/jquery.dataTables.js') }}"></script>
+    <script src="{{ url('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
     <!-- End plugin js for this page-->
     <!-- inject:js -->
-    <script src="js/off-canvas.js"></script>
-    <script src="js/hoverable-collapse.js"></script>
-    <script src="js/template.js"></script>
+    <script src="{{ url('js/off-canvas.js') }}"></script>
+    <script src="{{ url('js/hoverable-collapse.js') }}"></script>
+    <script src="{{ url('js/template.js') }}"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="js/dashboard.js"></script>
-    <script src="js/data-table.js"></script>
-    <script src="js/jquery.dataTables.js"></script>
-    <script src="js/dataTables.bootstrap4.js"></script>
+    <script src="{{ url('js/dashboard.js') }}"></script>
+    <script src="{{ url('js/data-table.js') }}"></script>
+    <script src="{{ url('js/jquery.dataTables.js') }}"></script>
+    <script src="{{ url('js/dataTables.bootstrap4.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-      $('#example').DataTable();
     });
     </script>
 

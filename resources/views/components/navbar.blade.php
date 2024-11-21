@@ -11,8 +11,7 @@
         <i class="mdi mdi-bell mx-0"></i>
         <span class="count"></span>
       </a>
-      <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
-        aria-labelledby="notificationDropdown">
+      <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
         <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
         <a class="dropdown-item">
           <div class="item-thumbnail">
@@ -57,11 +56,10 @@
     </li>
     <li class="nav-item nav-profile dropdown">
       <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-        <img src="images/faces/face5.jpg" alt="profile" />
+        <img src="{{ url('images/faces/face5.jpg') }}" alt="profile" />
         <span class="nav-profile-name">Louis Barnett</span>
       </a>
-      <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
-        aria-labelledby="profileDropdown">
+      <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
         <a class="dropdown-item">
           <i class="mdi mdi-settings text-primary"></i>
           Settings
@@ -73,8 +71,7 @@
       </div>
     </li>
   </ul>
-  <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-    data-toggle="offcanvas">
+  <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
     <span class="mdi mdi-menu"></span>
   </button>
 </div>

@@ -7,7 +7,7 @@ use App\Http\Controllers\LoginController;
 
 // Route::get('/', function () {
 //     return view('welcome');
-// }); 
+// });
 
 Route::get('login', [Controller::class, 'login'])->name('login');
 Route::get('/', [Controller::class, 'index'])->name('index');
@@ -16,7 +16,7 @@ Route::get('service', [Controller::class, 'service'])->name('service');
 Route::get('supplier', [Controller::class, 'supplier'])->name('supplier');
 
 //Login
-// Route::post('login-process', [LoginController::class, 'loginProcess'])->name('login-process');
+Route::post('login-process', [LoginController::class, 'loginProcess'])->name('login-process');
 
 
 // Inventory

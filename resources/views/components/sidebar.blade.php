@@ -24,5 +24,11 @@
         <span class="menu-title">Suppliers</span>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('customer')}}">
+        <i class="fa-solid fa-box menu-icon"></i>
+        <span class="menu-title">Customer</span>
+      </a>
+    </li>
   </ul>
 </nav>

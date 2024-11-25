@@ -14,6 +14,8 @@ Route::get('/', [Controller::class, 'index'])->name('index');
 Route::get('inventory', [Controller::class, 'inventory'])->name('inventory');
 Route::get('service', [Controller::class, 'service'])->name('service');
 Route::get('supplier', [Controller::class, 'supplier'])->name('supplier');
+Route::get('customer', [Controller::class, 'customer'])->name('customer');
+
 
 //Login
 Route::post('login-process', [LoginController::class, 'loginProcess'])->name('login-process');

@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <x-card>
-                        <form class="forms-sample" action="{{ route('inventory-update') }}" method="post">
+                        <form class="forms-sample" action="{{ route('update-inventory') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputCode1">Sparepart Code</label>

@@ -31,12 +31,12 @@
                     <div class="row">
                         <div class="col-md-12 stretch-card">
                             <div class="card px-3 py-3" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
-                                <button
+                                <a href="{{ route('new-service') }}"
                                     class="btn btn-success d-flex align-items-center justify-content-center gap-2 mb-4 mt-2"
                                     style="height: 50px; width: 130px; font-size: 18px;box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
                                     <i class="fa-solid fa-plus"></i>
                                     <span>New Data</span>
-                                </button>
+                                </a>
                                 <table id="example" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>

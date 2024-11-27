@@ -63,6 +63,28 @@
                   <tbody>
                     @forelse ($inventories as $inventory)
 
+                    {{-- MODAL DELETE --}}
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                          </div>
+                          <div class="modal-body">
+                            Are you sure you want to delete this sparepart?
+                          </div>
+                          <div class="modal-footer">
+                            <form id="deleteForm" action="{{ route('delete-inventory') }}" method="POST">
+                              @csrf
+                              <input hidden type="text" name="id" id="productId" value="{{ $inventory->id }}">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                              <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <tr>
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $inventory->code }}</td>
@@ -81,7 +103,7 @@
                     </tr>
                     @empty
                     <tr>
-                      <td colspan="6" class="text-center fw-bold py-3 fs-6">Empty spareparts in warehouse</td>
+                      <td colspan="7" class="text-center fw-bold py-3 fs-6">Empty spareparts in warehouse</td>
                     </tr>
                     @endforelse
                   </tbody>
@@ -91,29 +113,6 @@
           </div>
         </div>
         <x-footer></x-footer>
-      </div>
-    </div>
-  </div>
-
-
-  {{-- MODAL DELETE --}}
-  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-        </div>
-        <div class="modal-body">
-          Are you sure you want to delete this sparepart?
-        </div>
-        <div class="modal-footer">
-          <form id="deleteForm" action="{{ route('delete-inventory') }}" method="POST">
-            @csrf
-            <input hidden type="text" name="id" id="productId" value="{{ $inventory->id }}">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
-        </div>
       </div>
     </div>
   </div>

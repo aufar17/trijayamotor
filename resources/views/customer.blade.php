@@ -17,12 +17,12 @@
                             <div class="d-flex justify-content-between flex-wrap">
                                 <div class="d-flex align-items-end flex-wrap">
                                     <div class="mr-md-3 mr-xl-5">
-                                        <h2>Service</h2>
+                                        <h2>Customer</h2>
                                     </div>
                                     <div class="d-flex">
                                         <i class="mdi mdi-home text-muted hover-cursor"></i>
                                         <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
-                                        <p class="text-primary mb-0 hover-cursor">Service</p>
+                                        <p class="text-primary mb-0 hover-cursor">Customer</p>
                                     </div>
                                 </div>
                             </div>
@@ -40,23 +40,21 @@
                                 <table id="example" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
-                                            <th>Service Code</th>
-                                            <th>Services</th>
-                                            <th>Description</th>
-                                            <th>Price</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($services as $service )
-
-
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $service->code }}</td>
-                                            <td>{{ $service->services }}</td>
-                                            <td>{{ $service->description }}</td>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011-04-25</td>
                                             <td>
                                                 <a class="btn btn-info" href=""><i
                                                         class="fa-solid fa-circle-info"></i></a>
@@ -66,12 +64,6 @@
                                                         class="fa-solid fa-trash"></i></button>
                                             </td>
                                         </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="6" class="text-center fw-bold py-3 fs-6">Service not available
-                                            </td>
-                                        </tr>
-                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>

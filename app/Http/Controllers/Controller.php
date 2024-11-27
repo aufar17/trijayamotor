@@ -27,6 +27,10 @@ class Controller extends BaseController
 
         return view('inventory', $data);
     }
+    public function transaction()
+    {
+        return view('transaction');
+    }
     public function service()
     {
         $services = Service::all();

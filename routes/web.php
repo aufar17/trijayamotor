@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ServiceController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -12,6 +13,7 @@ use App\Http\Controllers\LoginController;
 Route::get('login', [Controller::class, 'login'])->name('login');
 Route::get('/', [Controller::class, 'index'])->name('index');
 Route::get('inventory', [Controller::class, 'inventory'])->name('inventory');
+Route::get('transaction', [Controller::class, 'transaction'])->name('transaction');
 Route::get('service', [Controller::class, 'service'])->name('service');
 Route::get('supplier', [Controller::class, 'supplier'])->name('supplier');
 Route::get('customer', [Controller::class, 'customer'])->name('customer');
@@ -25,6 +27,15 @@ Route::post('login-process', [LoginController::class, 'loginProcess'])->name('lo
 Route::get('new-inventory', [InventoryController::class, 'newInventory'])->name('new-inventory');
 Route::post('add-inventory', [InventoryController::class, 'inventoryPost'])->name('inventory-post');
 Route::get('edit-inventory/{id}', [InventoryController::class, 'editInventory'])->name('edit-inventory');
-Route::post('update-inventory', [InventoryController::class, 'inventoryUpdate'])->name('inventory-update');
+Route::post('update-inventory', [InventoryController::class, 'inventoryUpdate'])->name('update-inventory');
 Route::post('delete-inventory', [InventoryController::class, 'inventoryDelete'])->name('delete-inventory');
 Route::get('detail-inventory/{id}', [InventoryController::class, 'detailInventory'])->name('detail-inventory');
+
+
+//Service
+Route::get('new-service', [ServiceController::class, 'newService'])->name('new-service');
+Route::post('add-service', [ServiceController::class, 'ServicePost'])->name('service-post');
+Route::get('edit-service/{id}', [ServiceController::class, 'editService'])->name('edit-service');
+Route::post('update-service', [ServiceController::class, 'serviceUpdate'])->name('update-service');
+Route::post('delete-service', [ServiceController::class, 'serviceDelete'])->name('delete-service');
+Route::get('detail-service/{id}', [ServiceController::class, 'serviceInventory'])->name('detail-service');

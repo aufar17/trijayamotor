@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TransactionController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -39,3 +40,12 @@ Route::get('edit-service/{id}', [ServiceController::class, 'editService'])->name
 Route::post('update-service', [ServiceController::class, 'serviceUpdate'])->name('update-service');
 Route::post('delete-service', [ServiceController::class, 'serviceDelete'])->name('delete-service');
 Route::get('detail-service/{id}', [ServiceController::class, 'serviceInventory'])->name('detail-service');
+
+
+//Transaction
+Route::get('new-transaction', [TransactionController::class, 'newTransaction'])->name('new-transaction');
+Route::post('add-transaction', [TransactionController::class, 'transactionPost'])->name('transaction-post');
+Route::get('edit-transaction', [TransactionController::class, 'editTransaction'])->name('edit-transaction');
+Route::post('update-transaction', [TransactionController::class, 'transactionUpdate'])->name('update-transaction');
+Route::post('delete-transaction', [TransactionController::class, 'transactionDelete'])->name('delete-transaction');
+Route::get('detail-transaction/{id}', [TransactionController::class, 'transactionInventory'])->name('detail-transaction');

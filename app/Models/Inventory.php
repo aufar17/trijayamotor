@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Inventory extends Model
 {
@@ -17,6 +18,12 @@ class Inventory extends Model
         'location',
         'entry',
     ];
+
+
+    public function supplier(): BelongsTo
+    {
+        return $this->belongsTo(Supplier::class);
+    }
 
     public function getSellRupiahAttribute($value)
     {

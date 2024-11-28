@@ -14,12 +14,16 @@ return new class extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
             $table->integer('code')->unique();
+            $table->foreignId('supplier_id')->constrained(
+                table: 'suppliers',
+                indexName: 'inventory_supplier_id'
+            );
             $table->string('name');
             $table->string('description');
             $table->integer('stock');
             $table->integer('purchase');
             $table->integer('sell');
-            $table->string('location');
+            $table->string('location',25);
             $table->date('entry');
             $table->timestamps();
         });

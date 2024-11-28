@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
 
 // Route::get('/', function () {
@@ -51,3 +52,11 @@ Route::get('edit-transaction', [TransactionController::class, 'editTransaction']
 Route::post('update-transaction', [TransactionController::class, 'transactionUpdate'])->name('update-transaction');
 Route::post('delete-transaction', [TransactionController::class, 'transactionDelete'])->name('delete-transaction');
 Route::get('detail-transaction/{id}', [TransactionController::class, 'transactionInventory'])->name('detail-transaction');
+
+//Supplier
+Route::get('new-supplier', [SupplierController::class, 'newSupplier'])->name('new-supplier');
+Route::post('add-supplier', [SupplierController::class, 'supplierPost'])->name('supplier-post');
+Route::get('edit-supplier/{id}', [SupplierController::class, 'editSupplier'])->name('edit-supplier');
+Route::post('update-supplier', [SupplierController::class, 'supplierUpdate'])->name('update-supplier');
+Route::post('delete-supplier', [SupplierController::class, 'supplierDelete'])->name('delete-supplier');
+Route::get('detail-supplier/{id}', [SupplierController::class, 'detailSupplier'])->name('detail-supplier');

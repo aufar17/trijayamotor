@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('code');
             $table->string('name');
             $table->string('email', 50);
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('address');
             $table->string('province', 50);
             $table->string('cities', 100);

@@ -17,25 +17,19 @@
 <style>
     #loader {
         position: fixed;
-        /* Tetap di tengah layar, meskipun pengguna scroll */
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         background-color: rgba(255, 255, 255, 0.8);
-        /* Warna latar belakang semi-transparan */
         display: flex;
         justify-content: center;
-        /* Memposisikan di tengah secara horizontal */
         align-items: center;
-        /* Memposisikan di tengah secara vertikal */
         z-index: 9999;
-        /* Memastikan loader di atas elemen lain */
     }
 
     #loader img {
         width: 100px;
-        /* Perbesar ukuran GIF */
         height: 100px;
     }
 </style>

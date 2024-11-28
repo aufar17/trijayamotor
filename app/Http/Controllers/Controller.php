@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use App\Models\Service;
+use App\Models\Supplier;
 use App\Models\User;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -47,7 +48,12 @@ class Controller extends BaseController
     }
     public function supplier()
     {
-        return view('supplier');
+        $suppliers = Supplier::all();
+        $data = [
+            'suppliers' => $suppliers
+        ];
+
+        return view('supplier', $data);
     }
     public function customer()
     {

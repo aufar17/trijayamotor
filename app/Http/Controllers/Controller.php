@@ -4,18 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
     public function login()
     {
+
         return view('login');
     }
 
     public function index()
     {
-        return view('index');
+        $users = User::all();
+        $data = [
+            'user' => $users
+        ];
+        return view('index', $data);
     }
 
     public function inventory()

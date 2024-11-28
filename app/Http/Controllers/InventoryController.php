@@ -14,6 +14,7 @@ class InventoryController extends Controller
 
     public function editInventory($id)
     {
+
         $inventory = Inventory::where('id', $id)->first();
         if (!$inventory) {
             return redirect()->route('inventory')->with('error', 'inventory not found');

@@ -1,44 +1,55 @@
+<style>
+  .nav .nav-link.active {
+    color: #007bff;
+  }
+</style>
+
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
+    <!-- Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="{{route('index')}}">
+      <a class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}" href="{{ route('index') }}">
         <i class="fa-solid fa-house menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
+
+    <!-- Inventory -->
     <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+      <a class="nav-link {{ request()->is('inventory') || request()->is('detail-inventory/*') ? 'active' : '' }}"
+        href="{{ route('inventory') }}">
         <i class="fa-solid fa-screwdriver-wrench menu-icon"></i>
         <span class="menu-title">Inventory</span>
-        <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="ui-basic">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{ route('inventory') }}">Spareparts</a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Spareparts Usage</a></li>
-        </ul>
-      </div>
     </li>
+
+    <!-- Transaction -->
     <li class="nav-item">
-      <a class="nav-link" href="{{route('transaction')}}">
+      <a class="nav-link {{ request()->routeIs('transaction') ? 'active' : '' }}" href="{{ route('transaction') }}">
         <i class="fa-solid fa-shop menu-icon"></i>
         <span class="menu-title">Transaction</span>
       </a>
     </li>
+
+    <!-- Service -->
     <li class="nav-item">
-      <a class="nav-link" href="{{route('service')}}">
+      <a class="nav-link {{ request()->routeIs('service') ? 'active' : '' }}" href="{{ route('service') }}">
         <i class="fa-solid fa-receipt menu-icon"></i>
         <span class="menu-title">Service</span>
       </a>
     </li>
+
+    <!-- Supplier -->
     <li class="nav-item">
-      <a class="nav-link" href="{{route('supplier')}}">
+      <a class="nav-link {{ request()->routeIs('supplier') ? 'active' : '' }}" href="{{ route('supplier') }}">
         <i class="fa-solid fa-box menu-icon"></i>
         <span class="menu-title">Suppliers</span>
       </a>
     </li>
+
+    <!-- Customer -->
     <li class="nav-item">
-      <a class="nav-link" href="{{route('customer')}}">
+      <a class="nav-link {{ request()->routeIs('customer') ? 'active' : '' }}" href="{{ route('customer') }}">
         <i class="fa-solid fa-person menu-icon"></i>
         <span class="menu-title">Customer</span>
       </a>

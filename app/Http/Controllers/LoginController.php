@@ -29,4 +29,10 @@ class LoginController extends Controller
             'username' => 'Username atau password salah.',
         ])->withInput($request->only('username'));
     }
+
+    public function logout()
+    {
+        Session::remove('user');
+        return redirect()->route('login');
+    }
 }

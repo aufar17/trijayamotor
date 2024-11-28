@@ -20,8 +20,9 @@ Route::get('supplier', [Controller::class, 'supplier'])->name('supplier');
 Route::get('customer', [Controller::class, 'customer'])->name('customer');
 
 
-//Login
+//User
 Route::post('login-process', [LoginController::class, 'loginProcess'])->name('login-process');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 
 // Inventory
@@ -31,6 +32,7 @@ Route::get('edit-inventory/{id}', [InventoryController::class, 'editInventory'])
 Route::post('update-inventory', [InventoryController::class, 'inventoryUpdate'])->name('update-inventory');
 Route::post('delete-inventory', [InventoryController::class, 'inventoryDelete'])->name('delete-inventory');
 Route::get('detail-inventory/{id}', [InventoryController::class, 'detailInventory'])->name('detail-inventory');
+
 
 
 //Service

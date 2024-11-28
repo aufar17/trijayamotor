@@ -40,70 +40,77 @@
                     <x-card>
                         <form class="forms-sample" action="{{ route('update-inventory') }}" method="post">
                             @csrf
-                            <div class="form-group">
-                                <label for="exampleInputCode1">Sparepart Code</label>
-                                <input readonly name="code" type="number" class="form-control" id="exampleInputName1"
-                                    placeholder="Code" value="{{ $inventory->code }}">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputCode1">Sparepart Code</label>
+                                        <input name="code" type="number" class="form-control" id="exampleInputName1"
+                                            placeholder="Code">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect2">Supplier</label>
+                                        <select class="form-control" id="exampleFormControlSelect2">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down position-absolute"
+                                            style="top: 50%; right: 1rem; transform: translateY(-50%); pointer-events: none;margin-right:10px"></i>
+                                    </div>
+                                </div>
                             </div>
+
+
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputName1">Name</label>
                                         <input name="name" type="text" class="form-control" id="exampleInputName1"
-                                            placeholder="Name" value="{{ $inventory->name }}">
+                                            placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputStock1">Stock</label>
                                         <input name="stock" type="number" class="form-control" id="exampleInputStock1"
-                                            placeholder="Stock" value="{{ $inventory->stock }}">
+                                            placeholder="Stock">
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputConfirmPurchase1">Purchase</label>
                                         <input name="purchase" type="text" class="form-control"
-                                            id="exampleInputPurchase1" placeholder="Purchase"
-                                            value="{{ $inventory->purchase }}">
+                                            id="exampleInputPurchase1" placeholder="Purchase">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputSell1">Sell</label>
                                         <input name="sell" type="number" class="form-control" id="exampleInputSell1"
-                                            placeholder="Sell" value="{{ $inventory->sell }}">
+                                            placeholder="Sell">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputConfirmDescription1">Description</label>
                                 <textarea name="description" class="form-control" id="exampleTextarea1"
-                                    rows="4">{{ $inventory->description }}</textarea>
+                                    rows="4"></textarea>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputConfirmLocation1">Location</label>
-                                        <input name="location" type="text" class="form-control"
-                                            id="exampleInputLocation1" placeholder="Location"
-                                            value="{{ $inventory->location }}">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputEntry1">Entry</label>
-                                        <input name="entry" type="date" class="form-control" id="exampleInputEntry1"
-                                            placeholder="Entry" value="{{ $inventory->entry }}">
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="exampleInputConfirmLocation1">Location</label>
+                                <input name="location" type="text" class="form-control" id="exampleInputLocation1"
+                                    placeholder="Location">
                             </div>
                             <div class="row mt-3">
                                 <div class="col-6">
-                                    <button type="submit" class="btn btn-primary mr-2">Save</button>
-                                    <input type="hidden" name="id" value="{{ $inventory->id }}">
+                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                     <a href="{{ route('inventory') }}" class="btn btn-danger">Cancel</a>
                         </form>
                 </div>

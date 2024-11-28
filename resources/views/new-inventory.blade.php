@@ -40,11 +40,31 @@
                     <x-card>
                         <form class="forms-sample" action="{{ route('inventory-post') }}" method="post">
                             @csrf
-                            <div class="form-group">
-                                <label for="exampleInputCode1">Sparepart Code</label>
-                                <input name="code" type="number" class="form-control" id="exampleInputName1"
-                                    placeholder="Code">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputCode1">Sparepart Code</label>
+                                        <input name="code" type="number" class="form-control" id="exampleInputName1"
+                                            placeholder="Code">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect2">Supplier</label>
+                                        <select class="form-control" id="exampleFormControlSelect2">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down position-absolute"
+                                            style="top: 50%; right: 1rem; transform: translateY(-50%); pointer-events: none;margin-right:10px"></i>
+                                    </div>
+                                </div>
                             </div>
+
+
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
@@ -61,6 +81,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
@@ -82,21 +103,10 @@
                                 <textarea name="description" class="form-control" id="exampleTextarea1"
                                     rows="4"></textarea>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputConfirmLocation1">Location</label>
-                                        <input name="location" type="text" class="form-control"
-                                            id="exampleInputLocation1" placeholder="Location">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputEntry1">Entry</label>
-                                        <input name="entry" type="date" class="form-control" id="exampleInputEntry1"
-                                            placeholder="Entry">
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="exampleInputConfirmLocation1">Location</label>
+                                <input name="location" type="text" class="form-control" id="exampleInputLocation1"
+                                    placeholder="Location">
                             </div>
                             <div class="row mt-3">
                                 <div class="col-6">

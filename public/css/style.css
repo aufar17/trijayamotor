@@ -22298,8 +22298,8 @@ select.form-control,
 .dataTables_wrapper select {
     padding: .4375rem .75rem;
     border: 0;
-    outline: 1px solid #f3f3f3;
-    color: #c9c8c8;
+    outline: 1px solid #B7B7B7;
+    color: black;
 }
 
 select.form-control:focus,

@@ -16,7 +16,6 @@ class Inventory extends Model
         'purchase',
         'sell',
         'location',
-        'entry',
     ];
 
 

@@ -23,8 +23,7 @@ return new class extends Migration
             $table->integer('stock');
             $table->integer('purchase');
             $table->integer('sell');
-            $table->string('location',25);
-            $table->date('entry');
+            $table->string('location', 25);
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Inventory;
 use App\Models\Service;
 use App\Models\Supplier;
@@ -57,6 +58,11 @@ class Controller extends BaseController
     }
     public function customer()
     {
-        return view('customer');
+        $customers = Customer::all();
+        $data = [
+            'customers' => $customers
+        ];
+
+        return view('customer', $data);
     }
 }

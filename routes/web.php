@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ServiceController;
@@ -60,3 +61,11 @@ Route::get('edit-supplier/{id}', [SupplierController::class, 'editSupplier'])->n
 Route::post('update-supplier', [SupplierController::class, 'supplierUpdate'])->name('update-supplier');
 Route::post('delete-supplier', [SupplierController::class, 'supplierDelete'])->name('delete-supplier');
 Route::get('detail-supplier/{id}', [SupplierController::class, 'detailSupplier'])->name('detail-supplier');
+
+//Customer
+Route::get('new-customer', [CustomerController::class, 'newCustomer'])->name('new-customer');
+Route::post('add-customer', [CustomerController::class, 'customerPost'])->name('customer-post');
+Route::get('edit-customer/{id}', [CustomerController::class, 'editCustomer'])->name('edit-customer');
+Route::post('update-customer', [CustomerController::class, 'customerUpdate'])->name('update-customer');
+Route::post('delete-customer', [CustomerController::class, 'customerDelete'])->name('delete-customer');
+Route::get('detail-customer/{id}', [CustomerController::class, 'detailcustomer'])->name('detail-customer');

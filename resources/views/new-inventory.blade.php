@@ -17,7 +17,7 @@
     <div class="container-scroller">
         <x-header-sidebar></x-header-sidebar>
         <div class="container-fluid page-body-wrapper">
-            <x-sidebar></x-sidebar>
+            <x-sidebar></x-sidebar>x
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
@@ -49,18 +49,20 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="form-group">
+                                    <div class="form-group position-relative">
                                         <label for="exampleFormControlSelect2">Supplier</label>
-                                        <select class="form-control" id="exampleFormControlSelect2">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select class="form-control" id="exampleFormControlSelect2" name="supplier_id"
+                                            required>
+                                            <option value="" selected disabled>Pilih Supplier</option>
+                                            @foreach ($suppliers as $supplier)
+                                            <option value="{{ $supplier->id }}">{{ $supplier->code }} - {{
+                                                $supplier->name }}</option>
+                                            @endforeach
                                         </select>
                                         <i class="fas fa-chevron-down position-absolute"
-                                            style="top: 50%; right: 1rem; transform: translateY(-50%); pointer-events: none;margin-right:10px"></i>
+                                            style="top: 50%; right: 1rem; transform: translateY(-50%); pointer-events: none; margin-right: 10px;"></i>
                                     </div>
+
                                 </div>
                             </div>
 

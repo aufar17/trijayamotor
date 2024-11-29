@@ -45,18 +45,21 @@
                                     <div class="form-group">
                                         <label for="exampleInputCode1">Sparepart Code</label>
                                         <input name="code" type="number" class="form-control" id="exampleInputName1"
-                                            placeholder="Code">
+                                            placeholder="Code" value="{{ $inventory->code }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect2">Supplier</label>
-                                        <select class="form-control" id="exampleFormControlSelect2">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select class="form-control" id="exampleFormControlSelect2" name="supplier_id"
+                                            required>
+                                            <option value="" disabled>Pilih Supplier</option>
+                                            @foreach ($suppliers as $supplier)
+                                            <option value="{{ $supplier->id }}" {{ $inventory->supplier_id ==
+                                                $supplier->id ? 'selected' : '' }}>
+                                                {{ $supplier->code }} - {{ $supplier->name }}
+                                            </option>
+                                            @endforeach
                                         </select>
                                         <i class="fas fa-chevron-down position-absolute"
                                             style="top: 50%; right: 1rem; transform: translateY(-50%); pointer-events: none;margin-right:10px"></i>
@@ -64,20 +67,19 @@
                                 </div>
                             </div>
 
-
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputName1">Name</label>
                                         <input name="name" type="text" class="form-control" id="exampleInputName1"
-                                            placeholder="Name">
+                                            placeholder="Name" value="{{ $inventory->name }}" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputStock1">Stock</label>
                                         <input name="stock" type="number" class="form-control" id="exampleInputStock1"
-                                            placeholder="Stock">
+                                            placeholder="Stock" value="{{ $inventory->stock }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -86,33 +88,41 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputConfirmPurchase1">Purchase</label>
-                                        <input name="purchase" type="text" class="form-control"
-                                            id="exampleInputPurchase1" placeholder="Purchase">
+                                        <input name="purchase" type="number" class="form-control"
+                                            id="exampleInputPurchase1" placeholder="Purchase"
+                                            value="{{ $inventory->purchase }}" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputSell1">Sell</label>
                                         <input name="sell" type="number" class="form-control" id="exampleInputSell1"
-                                            placeholder="Sell">
+                                            placeholder="Sell" value="{{ $inventory->sell }}" required>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <label for="exampleInputConfirmDescription1">Description</label>
-                                <textarea name="description" class="form-control" id="exampleTextarea1"
-                                    rows="4"></textarea>
+                                <textarea name="description" class="form-control" id="exampleTextarea1" rows="4"
+                                    required>{{ $inventory->description }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputConfirmLocation1">Location</label>
                                 <input name="location" type="text" class="form-control" id="exampleInputLocation1"
-                                    placeholder="Location">
+                                    placeholder="Location" value="{{ $inventory->location }}" required>
                             </div>
+
                             <div class="row mt-3">
                                 <div class="col-6">
+                                    <input hidden type="number" name="id" value="{{ $inventory->id }}">
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                     <a href="{{ route('inventory') }}" class="btn btn-danger">Cancel</a>
+                                </div>
+                            </div>
                         </form>
+
+
                 </div>
             </div>
             </x-card>

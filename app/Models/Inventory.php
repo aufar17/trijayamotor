@@ -9,9 +9,9 @@ class Inventory extends Model
 {
     protected $fillable = [
         'code',
+        'supplier_id',
         'name',
         'description',
-        'stock',
         'stock',
         'purchase',
         'sell',

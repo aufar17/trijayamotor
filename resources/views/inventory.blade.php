@@ -57,6 +57,7 @@
                       <th>Stock</th>
                       <th>Sell</th>
                       <th>Location</th>
+                      <th>Supplier</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -91,6 +92,7 @@
                       <td>{{ $inventory->name }}</td>
                       <td>{{ $inventory->stock }}</td>
                       <td>{{ $inventory->SellRupiah }}</td>
+                      <td>{{ $inventory->supplier->name }}</td>
                       <td>{{ $inventory->location }}</td>
                       <td>
                         <a class="btn btn-info" href="{{ route('detail-inventory',['id' => $inventory->id]) }}"><i
@@ -103,7 +105,7 @@
                     </tr>
                     @empty
                     <tr>
-                      <td colspan="7" class="text-center fw-bold py-3 fs-6">Empty spareparts in warehouse</td>
+                      <td colspan="8" class="text-center fw-bold py-3 fs-6">Empty spareparts in warehouse</td>
                     </tr>
                     @endforelse
                   </tbody>

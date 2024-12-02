@@ -46,27 +46,24 @@
                                     placeholder="Code">
                             </div>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputName1">Name</label>
                                         <input name="name" type="text" class="form-control" id="exampleInputName1"
                                             placeholder="Name">
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputPhone1">Phone</label>
                                         <input name="phone" type="number" class="form-control" id="exampleInputPhone1"
                                             placeholder="Phone">
                                     </div>
                                 </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputAddress1">Address</label>
-                                        <input name="address" type="text" class="form-control" id="exampleInputAddress1"
-                                            placeholder="Address">
-                                    </div>
-                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputConfirmAddress1">Address</label>
+                                <textarea name="address" class="form-control" id="exampleTextarea1" rows="4"></textarea>
                             </div>
                             <div class="row">
                                 <div class="col-6">

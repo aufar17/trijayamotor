@@ -54,5 +54,13 @@
         <span class="menu-title">Customer</span>
       </a>
     </li>
+
+    <!-- Customer -->
+    <li class="nav-item">
+      <a class="nav-link {{ request()->routeIs('vehicle') ? 'active' : '' }}" href="{{ route('vehicle') }}">
+        <i class="fa-solid fa-person menu-icon"></i>
+        <span class="menu-title">Vehicle</span>
+      </a>
+    </li>
   </ul>
 </nav>

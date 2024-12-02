@@ -7,6 +7,7 @@ use App\Models\Inventory;
 use App\Models\Service;
 use App\Models\Supplier;
 use App\Models\User;
+use App\Models\Vehicle;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -64,5 +65,14 @@ class Controller extends BaseController
         ];
 
         return view('customer', $data);
+    }
+    public function vehicle()
+    {
+        $vehicles = Vehicle::all();
+        $data = [
+            'vehicles' => $vehicles
+        ];
+
+        return view('vehicle', $data);
     }
 }

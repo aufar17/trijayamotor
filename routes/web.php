@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\VehicleController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -20,6 +21,7 @@ Route::get('transaction', [Controller::class, 'transaction'])->name('transaction
 Route::get('service', [Controller::class, 'service'])->name('service');
 Route::get('supplier', [Controller::class, 'supplier'])->name('supplier');
 Route::get('customer', [Controller::class, 'customer'])->name('customer');
+Route::get('vehicle', [Controller::class, 'vehicle'])->name('vehicle');
 
 
 //User
@@ -52,7 +54,7 @@ Route::post('add-transaction', [TransactionController::class, 'transactionPost']
 Route::get('edit-transaction', [TransactionController::class, 'editTransaction'])->name('edit-transaction');
 Route::post('update-transaction', [TransactionController::class, 'transactionUpdate'])->name('update-transaction');
 Route::post('delete-transaction', [TransactionController::class, 'transactionDelete'])->name('delete-transaction');
-Route::get('detail-transaction/{id}', [TransactionController::class, 'transactionInventory'])->name('detail-transaction');
+Route::get('detail-transaction/{id}', [TransactionController::class, 'detailInventory'])->name('detail-transaction');
 
 //Supplier
 Route::get('new-supplier', [SupplierController::class, 'newSupplier'])->name('new-supplier');
@@ -68,4 +70,12 @@ Route::post('add-customer', [CustomerController::class, 'customerPost'])->name('
 Route::get('edit-customer/{id}', [CustomerController::class, 'editCustomer'])->name('edit-customer');
 Route::post('update-customer', [CustomerController::class, 'customerUpdate'])->name('update-customer');
 Route::post('delete-customer', [CustomerController::class, 'customerDelete'])->name('delete-customer');
-Route::get('detail-customer/{id}', [CustomerController::class, 'detailcustomer'])->name('detail-customer');
+Route::get('detail-customer/{id}', [CustomerController::class, 'detailCustomer'])->name('detail-customer');
+
+//Vehicle
+Route::get('new-vehicle', [VehicleController::class, 'newVehicle'])->name('new-vehicle');
+Route::post('add-vehicle', [VehicleController::class, 'vehiclePost'])->name('vehicle-post');
+Route::get('edit-vehicle/{id}', [VehicleController::class, 'editVehicle'])->name('edit-vehicle');
+Route::post('update-vehicle', [VehicleController::class, 'vehicleUpdate'])->name('update-vehicle');
+Route::post('delete-vehicle', [VehicleController::class, 'vehicleDelete'])->name('delete-vehicle');
+Route::get('detail-vehicle/{id}', [VehicleController::class, 'detailVehicle'])->name('detail-vehicle');

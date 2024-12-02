@@ -83,24 +83,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputBank1">Bank</label>
-                                        <input name="bank" type="text" class="form-control" id="exampleInputBank1"
-                                            placeholder="Bank" value="{{ $customer->bank }}">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputBankAccount1">Bank Account</label>
-                                        <input name="bank_account" type="number" class="form-control"
-                                            id="exampleInputBankAccount1" placeholder="Bank Account"
-                                            value="{{ $customer->bank_account }}">
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="row mt-3">
                                 <div class="col-6">
                                     <input hidden type="number" name="id" value="{{ $customer->id }}">

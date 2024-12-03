@@ -19,8 +19,8 @@ class LoginController extends Controller
 
         $user = User::where('username', $validatedData['username'])->first();
 
-        if ($user && Hash::check($validatedData['password'], $user->password)) {
-            Session::put('user', $user);
+            if ($user && Hash::check($validatedData['password'], $user->password)) {
+                Session::put('user', $user);
 
             return redirect()->route('index');
         }

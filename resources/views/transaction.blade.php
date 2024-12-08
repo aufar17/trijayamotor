@@ -28,9 +28,20 @@
                             </div>
                         </div>
                     </div>
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+
+                    @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12 stretch-card">
-                            <div class="card px-3 py-3" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
+                            <div class="card px-4 py-3" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
                                 <a href="{{ route('new-transaction') }}"
                                     class="btn btn-success d-flex align-items-center justify-content-center gap-2 mb-4 mt-2"
                                     style="height: 50px; width: 130px; font-size: 18px;box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
@@ -40,46 +51,79 @@
                                 <table id="example" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
+                                            <th>No</th>
+                                            <th>Transaction Code</th>
+                                            <th>No. Polisi</th>
+                                            <th>Date</th>
+                                            <th>Total</th>
+                                            <th>Notes</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @forelse ($transactions as $transaction)
+
+                                        {{-- MODAL DELETE --}}
+                                        <div class="modal fade" id="deleteModal" tabindex="-1"
+                                            aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion
+                                                        </h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to delete this sparepart?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form id="deleteForm" action="{{ route('delete-transaction') }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <input hidden type="text" name="id" id="productId"
+                                                                value="{{ $transaction->id }}">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011-04-25</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $transaction->code }}</td>
+                                            <td>{{ $transaction->vehicle->nopol }}</td>
+                                            <td>{{ $transaction->total }}</td>
+                                            <td>{{ $transaction->notes }}</td>
+                                            <td>{{ $transaction->location }}</td>
                                             <td>
-                                                <a class="btn btn-info" href=""><i
+                                                <a class="btn btn-info"
+                                                    href="{{ route('detail-transaction',['id' => $transaction->id]) }}"><i
                                                         class="fa-solid fa-circle-info"></i></a>
-                                                <a class="btn btn-warning" href="{{ route('edit-transaction') }}"><i
+                                                <a class="btn btn-warning"
+                                                    href="{{ route('edit-transaction', ['id' => $transaction->id]) }}"><i
                                                         class="fa-solid fa-pen-to-square"></i></a>
-                                                <button class="btn btn-danger" href=""><i
+                                                <button class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#deleteModal" data-id="{{ $transaction->id }}"><i
                                                         class="fa-solid fa-trash"></i></button>
                                             </td>
                                         </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="8" class="text-center fw-bold py-3 fs-6">Empty transaction in
+                                                record</td>
+                                        </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
                 <x-footer></x-footer>
-                <!-- partial -->
             </div>
-            <!-- main-panel ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
 
     <!-- plugins:js -->
     <script src="vendors/base/vendor.bundle.base.js"></script>
@@ -105,8 +149,8 @@
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
-        });
+      $('#example').DataTable();
+    });
     </script>
 
 

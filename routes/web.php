@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
@@ -14,14 +15,14 @@ use App\Http\Controllers\VehicleController;
 //     return view('welcome');
 // });
 
-Route::get('login', [Controller::class, 'login'])->name('login');
-Route::get('/', [Controller::class, 'index'])->name('index');
-Route::get('inventory', [Controller::class, 'inventory'])->name('inventory');
-Route::get('transaction', [Controller::class, 'transaction'])->name('transaction');
-Route::get('service', [Controller::class, 'service'])->name('service');
-Route::get('supplier', [Controller::class, 'supplier'])->name('supplier');
-Route::get('customer', [Controller::class, 'customer'])->name('customer');
-Route::get('vehicle', [Controller::class, 'vehicle'])->name('vehicle');
+Route::get('login', [MainController::class, 'login'])->name('login');
+Route::get('/', [MainController::class, 'index'])->name('index');
+Route::get('inventory', [MainController::class, 'inventory'])->name('inventory');
+Route::get('transaction', [MainController::class, 'transaction'])->name('transaction');
+Route::get('service', [MainController::class, 'service'])->name('service');
+Route::get('supplier', [MainController::class, 'supplier'])->name('supplier');
+Route::get('customer', [MainController::class, 'customer'])->name('customer');
+Route::get('vehicle', [MainController::class, 'vehicle'])->name('vehicle');
 
 
 //User
@@ -51,7 +52,7 @@ Route::get('detail-service/{id}', [ServiceController::class, 'serviceInventory']
 //Transaction
 Route::get('new-transaction', [TransactionController::class, 'newTransaction'])->name('new-transaction');
 Route::post('add-transaction', [TransactionController::class, 'transactionPost'])->name('transaction-post');
-Route::get('edit-transaction', [TransactionController::class, 'editTransaction'])->name('edit-transaction');
+Route::get('edit-transaction/{id}', [TransactionController::class, 'editTransaction'])->name('edit-transaction');
 Route::post('update-transaction', [TransactionController::class, 'transactionUpdate'])->name('update-transaction');
 Route::post('delete-transaction', [TransactionController::class, 'transactionDelete'])->name('delete-transaction');
 Route::get('detail-transaction/{id}', [TransactionController::class, 'detailInventory'])->name('detail-transaction');

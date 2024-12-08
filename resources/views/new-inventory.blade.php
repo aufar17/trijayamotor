@@ -17,7 +17,7 @@
     <div class="container-scroller">
         <x-header-sidebar></x-header-sidebar>
         <div class="container-fluid page-body-wrapper">
-            <x-sidebar></x-sidebar>x
+            <x-sidebar></x-sidebar>
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">

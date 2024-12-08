@@ -55,10 +55,10 @@
       </a>
     </li>
 
-    <!-- Customer -->
+    <!-- Vehicle -->
     <li class="nav-item">
       <a class="nav-link {{ request()->routeIs('vehicle') ? 'active' : '' }}" href="{{ route('vehicle') }}">
-        <i class="fa-solid fa-person menu-icon"></i>
+        <i class="fa-solid fa-car menu-icon"></i>
         <span class="menu-title">Vehicle</span>
       </a>
     </li>

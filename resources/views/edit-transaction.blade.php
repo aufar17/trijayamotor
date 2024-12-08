@@ -9,7 +9,6 @@
 
     .form-control:focus {
         font-weight: 500;
-
     }
 </style>
 
@@ -38,46 +37,67 @@
                         </div>
                     </div>
                     <x-card>
-                        <form class="forms-sample" action="{{ route('service-post') }}" method="post">
+                        <form class="forms-sample" action="{{ route('update-transaction') }}" method="post">
                             @csrf
-                            <div class="form-group">
-                                <label for="exampleInputCode1">Service Code</label>
-                                <input name="code" type="number" class="form-control" id="exampleInputName1"
-                                    placeholder="Code">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputCode1">Transaction Code</label>
+                                        <input name="code" type="number" class="form-control" id="exampleInputName1"
+                                            placeholder="Code" value="{{ $transaction->code ?? '' }}">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group position-relative">
+                                        <label for="exampleFormControlSelect2">Vehicle</label>
+                                        <select class="form-control" id="exampleFormControlSelect2" name="vehicle_id"
+                                            required>
+                                            <option value="" disabled>Pilih Vehicle</option>
+                                            @foreach ($vehicles as $vehicle)
+                                            <option selected value="{{ $vehicle->id }}">{{ $vehicle->id }} - {{
+                                                $vehicle->merk }}
+                                                {{ $vehicle->model }} - {{ $vehicle->nopol }}</option>
+                                            @endforeach
+                                        </select>
+                                        <i class="fas fa-chevron-down position-absolute"
+                                            style="top: 70%; right: 1rem; transform: translateY(-50%); pointer-events: none; margin-right: 10px;"></i>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="exampleInputName1">Name</label>
-                                        <input name="name" type="text" class="form-control" id="exampleInputName1"
-                                            placeholder="Name">
+                                        <label for="exampleInputDate1">Date</label>
+                                        <input name="date" type="date" class="form-control" id="exampleInputDate1"
+                                            placeholder="Date" value="{{ $transaction->date ?? '' }}">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="exampleInputConfirmPrice1">Price</label>
-                                        <input name="price" type="text" class="form-control" id="exampleInputPrice1"
-                                            placeholder="Price">
+                                        <label for="exampleInputTotal1">Total</label>
+                                        <input name="total" type="number" class="form-control" id="exampleInputTotal1"
+                                            placeholder="Total" value="{{ $transaction->total ?? '' }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputConfirmDescription1">Description</label>
-                                <textarea name="description" class="form-control" id="exampleTextarea1"
-                                    rows="4"></textarea>
+                                <label for="exampleTextarea1">Notes</label>
+                                <textarea name="notes" class="form-control" id="exampleTextarea1"
+                                    rows="4">{{ $transaction->notes ?? '' }}</textarea>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-6">
+                                    <input hidden type="number" name="id" value="{{ $transaction->id }}">
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                    <a href="{{ route('service') }}" class="btn btn-danger">Cancel</a>
+                                    <a href="{{ route('transaction') }}" class="btn btn-danger">Cancel</a>
+                                </div>
+                            </div>
                         </form>
+                    </x-card>
                 </div>
+                <x-footer></x-footer>
             </div>
-            </x-card>
         </div>
-        <x-footer></x-footer>
-    </div>
-    </div>
     </div>
 
     <script src="vendors/base/vendor.bundle.base.js"></script>

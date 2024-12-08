@@ -52,12 +52,11 @@
                         </ul>
                     </div>
                     @endif
-                    <!-- Loader -->
+
                     <div id="loader" style="display: none; text-align: center;">
-                        <img src="{{ asset('images/1493.gif') }}" alt="Loading..." />
+                        <img src="{{ asset('images/loading.gif') }}" alt="Loading..." />
                     </div>
 
-                    <!-- Login Form -->
                     <form id="loginForm" action="{{ route('login-process') }}" method="post">
                         @csrf
                         <div class="form-group">

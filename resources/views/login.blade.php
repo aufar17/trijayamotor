@@ -40,7 +40,8 @@
             <div class="col-md-6 left-section" style="background-image: url('images/bg-login.png')">
                 <img class="logo" src="{{ asset('images/logo.png') }}" alt="">
             </div>
-            <div class="col-md-6 right-section">
+            <div class="col-md-6 right-section"
+                style="background-position: right; background-size: cover; background-image: url('images/bg-login2.png');">
                 <div class="login-form">
                     <h2 class="text-center mb-4">SIGN IN</h2>
                     @if ($errors->any())

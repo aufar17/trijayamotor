@@ -57,7 +57,7 @@ Route::post('add-transaction', [TransactionController::class, 'transactionPost']
 Route::get('edit-transaction/{id}', [TransactionController::class, 'editTransaction'])->name('edit-transaction');
 Route::post('update-transaction', [TransactionController::class, 'transactionUpdate'])->name('update-transaction');
 Route::post('delete-transaction', [TransactionController::class, 'transactionDelete'])->name('delete-transaction');
-Route::get('detail-transaction/{id}', [TransactionController::class, 'detailInventory'])->name('detail-transaction');
+Route::get('detail-transaction/{id}', [TransactionController::class, 'detailTransaction'])->name('detail-transaction');
 
 //Supplier
 Route::get('new-supplier', [SupplierController::class, 'newSupplier'])->name('new-supplier');

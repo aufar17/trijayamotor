@@ -42,35 +42,35 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Service Code</th>
-                                            <th>Services</th>
+                                            <th>Name</th>
                                             <th>Description</th>
                                             <th>Price</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($services as $service )
-
-
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $service->code }}</td>
-                                            <td>{{ $service->services }}</td>
-                                            <td>{{ $service->description }}</td>
-                                            <td>
-                                                <a class="btn btn-info" href=""><i
-                                                        class="fa-solid fa-circle-info"></i></a>
-                                                <a class="btn btn-warning" href=""><i
-                                                        class="fa-solid fa-pen-to-square"></i></a>
-                                                <button class="btn btn-danger" href=""><i
-                                                        class="fa-solid fa-trash"></i></button>
-                                            </td>
-                                        </tr>
+                                        @forelse ($services as $service)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $service->code }}</td>
+                                                <td>{{ $service->name }}</td>
+                                                <td>{{ $service->description }}</td>
+                                                <td>{{ $service->price }}</td>
+                                                <td>
+                                                    <a class="btn btn-info" href=""><i
+                                                            class="fa-solid fa-circle-info"></i></a>
+                                                    <a class="btn btn-warning" href=""><i
+                                                            class="fa-solid fa-pen-to-square"></i></a>
+                                                    <button class="btn btn-danger" href=""><i
+                                                            class="fa-solid fa-trash"></i></button>
+                                                </td>
+                                            </tr>
                                         @empty
-                                        <tr>
-                                            <td colspan="6" class="text-center fw-bold py-3 fs-6">Service not available
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td colspan="6" class="text-center fw-bold py-3 fs-6">Service not
+                                                    available
+                                                </td>
+                                            </tr>
                                         @endforelse
                                     </tbody>
                                 </table>

@@ -58,7 +58,6 @@ class VehicleController extends Controller
             'merk' => $vehicle['merk'],
             'model' => $vehicle['model'],
             'year' => $vehicle['year'],
-            'engine_number' => $vehicle['engine_number'],
             'chasis_number' => $vehicle['chasis_number'],
         ];
 
@@ -83,7 +82,6 @@ class VehicleController extends Controller
             'merk' => $vehicle['merk'],
             'model' => $vehicle['model'],
             'year' => $vehicle['year'],
-            'engine_number' => $vehicle['engine_number'],
             'chasis_number' => $vehicle['chasis_number'],
         ];
 

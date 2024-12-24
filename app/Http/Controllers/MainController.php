@@ -40,7 +40,7 @@ class MainController extends Controller
     }
     public function transaction()
     {
-        $transactions = Transaction::all();
+        $transactions =  Transaction::with(['vehicle','transactionInventory','transactionService'])->get();
         $data = [
             'transactions' => $transactions,
         ];
@@ -74,7 +74,7 @@ class MainController extends Controller
     }
     public function vehicle()
     {
-        $vehicles = Vehicle::all();
+        $vehicles = Vehicle::with('customer')->get();
         $data = [
             'vehicles' => $vehicles
         ];

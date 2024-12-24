@@ -9,8 +9,13 @@ class Service extends Model
     //
     protected $fillable = [
         'code',
-        'services',
+        'name',
         'description',
         'price',
     ];
+
+    public function getPriceServiceAttribute($value)
+    {
+        return 'Rp ' . number_format($this->attributes['price'], 0, ',', '.');
+    }
 }

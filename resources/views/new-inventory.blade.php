@@ -44,7 +44,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="exampleInputCode1">Sparepart Code</label>
-                                        <input name="code" type="number" class="form-control" id="exampleInputName1"
+                                        <input name="code" type="text" class="form-control" id="exampleInputName1"
                                             placeholder="Code">
                                     </div>
                                 </div>

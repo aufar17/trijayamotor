@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('merk');
             $table->string('model');
             $table->year('year');
-            $table->integer('chasis_number');
+            $table->string('chasis_number');
             $table->timestamps();
         });
     }

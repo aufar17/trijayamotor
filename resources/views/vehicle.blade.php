@@ -96,7 +96,7 @@
                                                 <td>{{ $vehicle->merk }}</td>
                                                 <td>{{ $vehicle->model }}</td>
                                                 <td>{{ $vehicle->year }}</td>
-                                                <td>{{ $vehicle->cust_id }}</td>
+                                                <td>{{ $vehicle->customer->name }}</td>
                                                 <td>
                                                     <a class="btn btn-info"
                                                         href="{{ route('detail-vehicle', ['id' => $vehicle->id]) }}"><i

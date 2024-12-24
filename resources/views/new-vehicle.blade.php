@@ -43,30 +43,27 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="exampleInputId1">Vehicle Id</label>
-                                        <input name="id" type="number" class="form-control" id="exampleInputName1"
-                                            placeholder="Vehicle Id">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
                                         <label for="exampleInputId1">No Polisi</label>
                                         <input name="nopol" type="string" class="form-control" id="exampleInputName1"
                                             placeholder="No Polisi">
                                     </div>
                                 </div>
-                                <div class="form-group position-relative">
-                                    <label for="exampleFormControlSelect2">Customer</label>
-                                    <select class="form-control" id="exampleFormControlSelect2" name="cust_id" required>
-                                        <option value="" selected disabled>Pilih Customer</option>
-                                        @foreach ($customers as $customer)
-                                        <option value="{{ $customer->id }}">{{ $customer->code }} - {{
-                                            $customer->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <i class="fas fa-chevron-down position-absolute"
-                                        style="top: 70%; right: 1rem; transform: translateY(-50%); pointer-events: none; margin-right: 10px;"></i>
+                                <div class="col-6">
+                                    <div class="form-group position-relative">
+                                        <label for="exampleFormControlSelect2">Customer</label>
+                                        <select class="form-control" id="exampleFormControlSelect2" name="cust_id"
+                                            required>
+                                            <option value="" selected disabled>Pilih Customer</option>
+                                            @foreach ($customers as $customer)
+                                                <option value="{{ $customer->id }}">{{ $customer->code }} -
+                                                    {{ $customer->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <i class="fas fa-chevron-down position-absolute"
+                                            style="top: 70%; right: 1rem; transform: translateY(-50%); pointer-events: none; margin-right: 10px;"></i>
+                                    </div>
                                 </div>
+
                             </div>
 
 
@@ -81,28 +78,21 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputModel1">Model</label>
-                                        <input name="model" type="text" class="form-control" id="exampleInputModel1"
-                                            placeholder="Model">
+                                        <input name="model" type="text" class="form-control"
+                                            id="exampleInputModel1" placeholder="Model">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputConfirmYear1">Year</label>
                                         <input name="year" type="number" class="form-control" id="exampleInputYear1"
                                             placeholder="Year">
                                     </div>
                                 </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputEngineNumber1">Engine Number</label>
-                                        <input name="engine_number" type="number" class="form-control"
-                                            id="exampleInputEngineNumber1" placeholder="Engine Number">
-                                    </div>
-                                </div>
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputChasisNumber1">Chasis Number</label>
                                         <input name="chasis_number" type="number" class="form-control"

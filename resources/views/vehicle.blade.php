@@ -29,15 +29,15 @@
                         </div>
                     </div>
                     @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
                     @endif
 
                     @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
                     @endif
                     <div class="row">
                         <div class="col-md-12 stretch-card">
@@ -62,57 +62,59 @@
                                     </thead>
                                     <tbody>
                                         @forelse ($vehicles as $vehicle)
-
-                                        {{-- MODAL DELETE --}}
-                                        <div class="modal fade" id="deleteModal" tabindex="-1"
-                                            aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion
-                                                        </h5>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Are you sure you want to delete this sparepart?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <form id="deleteForm" action="{{ route('delete-vehicle') }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            <input hidden type="text" name="id" id="productId"
-                                                                value="{{ $vehicle->id }}">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                                        </form>
+                                            {{-- MODAL DELETE --}}
+                                            <div class="modal fade" id="deleteModal" tabindex="-1"
+                                                aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteModalLabel">Confirm
+                                                                Deletion
+                                                            </h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Are you sure you want to delete this sparepart?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form id="deleteForm" action="{{ route('delete-vehicle') }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <input hidden type="text" name="id"
+                                                                    id="productId" value="{{ $vehicle->id }}">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Cancel</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $vehicle->nopol }}</td>
-                                            <td>{{ $vehicle->merk }}</td>
-                                            <td>{{ $vehicle->model}}</td>
-                                            <td>{{ $vehicle->year }}</td>
-                                            <td>{{ $vehicle->cust_id }}</td>
-                                            <td>
-                                                <a class="btn btn-info"
-                                                    href="{{ route('detail-vehicle',['id' => $vehicle->id]) }}"><i
-                                                        class="fa-solid fa-circle-info"></i></a>
-                                                <a class="btn btn-warning"
-                                                    href="{{ route('edit-vehicle', ['id' => $vehicle->id]) }}"><i
-                                                        class="fa-solid fa-pen-to-square"></i></a>
-                                                <button class="btn btn-danger" data-toggle="modal"
-                                                    data-target="#deleteModal" data-id="{{ $vehicle->id }}"><i
-                                                        class="fa-solid fa-trash"></i></button>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $vehicle->nopol }}</td>
+                                                <td>{{ $vehicle->merk }}</td>
+                                                <td>{{ $vehicle->model }}</td>
+                                                <td>{{ $vehicle->year }}</td>
+                                                <td>{{ $vehicle->cust_id }}</td>
+                                                <td>
+                                                    <a class="btn btn-info"
+                                                        href="{{ route('detail-vehicle', ['id' => $vehicle->id]) }}"><i
+                                                            class="fa-solid fa-circle-info"></i></a>
+                                                    <a class="btn btn-warning"
+                                                        href="{{ route('edit-vehicle', ['id' => $vehicle->id]) }}"><i
+                                                            class="fa-solid fa-pen-to-square"></i></a>
+                                                    <button class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#deleteModal" data-id="{{ $vehicle->id }}"><i
+                                                            class="fa-solid fa-trash"></i></button>
+                                                </td>
+                                            </tr>
                                         @empty
-                                        <tr>
-                                            <td colspan="8" class="text-center fw-bold py-3 fs-6">Empty vehicle in
-                                                record</td>
-                                        </tr>
+                                            <tr>
+                                                <td colspan="8" class="text-center fw-bold py-3 fs-6">Empty vehicle
+                                                    in
+                                                    record</td>
+                                            </tr>
                                         @endforelse
                                     </tbody>
                                 </table>
@@ -149,8 +151,8 @@
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-      $('#example').DataTable();
-    });
+            $('#example').DataTable();
+        });
     </script>
 
 

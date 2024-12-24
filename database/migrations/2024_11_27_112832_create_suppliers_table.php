@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('province', 50);
             $table->string('cities', 100);
             $table->string('bank');
-            $table->integer('bank_account');
+            $table->string('bank_account',25);
             $table->timestamps();
         });
     }

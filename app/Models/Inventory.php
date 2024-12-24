@@ -4,24 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Inventory extends Model
 {
     protected $fillable = [
         'code',
-        'supplier_id',
         'name',
         'description',
         'stock',
-        'purchase',
         'sell',
         'location',
     ];
 
 
-    public function supplier(): BelongsTo
+    public function histories(): HasMany
     {
-        return $this->belongsTo(Supplier::class);
+        return $this->hasMany(InventorySupplier::class);
     }
 
     public function getSellRupiahAttribute($value)

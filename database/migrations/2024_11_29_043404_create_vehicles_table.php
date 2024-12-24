@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('merk');
             $table->string('model');
             $table->year('year');
-            $table->integer('engine_number');
             $table->integer('chasis_number');
             $table->timestamps();
         });

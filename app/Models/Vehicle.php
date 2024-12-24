@@ -14,7 +14,6 @@ class Vehicle extends Model
         'merk',
         'model',
         'year',
-        'engine_number',
         'chasis_number',
     ];
 

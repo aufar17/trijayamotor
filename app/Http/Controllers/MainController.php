@@ -22,9 +22,20 @@ class MainController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = session('user');
+        $transactions =  Transaction::with(['vehicle','vehicle.customer','transactionInventory','transactionInventory.inventory','transactionService','transactionService.service'])->get();
+        $totalTransactions = Transaction::count();
+        $totalIncome = Transaction::sum('total');
+        $totalSpareparts = Inventory::count();
+        $totalSuppliers = Supplier::count();
+
         $data = [
-            'user' => $users
+            'users' => $users,
+            'transactions' => $transactions,
+            'totalTransactions' => $totalTransactions,
+            'totalIncome' => $totalIncome,
+            'totalSpareparts' => $totalSpareparts,
+            'totalSuppliers' => $totalSuppliers,
         ];
         return view('index', $data);
     }

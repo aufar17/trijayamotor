@@ -114,6 +114,7 @@
         </div>
     </div>
 
+
     <script src="vendors/base/vendor.bundle.base.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>

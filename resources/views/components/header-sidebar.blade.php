@@ -10,5 +10,8 @@
             </button>
         </div>
     </div>
-    <x-navbar></x-navbar>
+    <x-navbar>
+        <i class="fa-solid fa-user"></i>
+        <span class="nav-profile-name">Admin</span>
+    </x-navbar>
 </nav>

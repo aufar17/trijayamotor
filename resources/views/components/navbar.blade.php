@@ -5,7 +5,7 @@
         </li>
     </ul>
     <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item dropdown mr-4">
+        {{-- <li class="nav-item dropdown mr-4">
             <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown"
                 id="notificationDropdown" href="#" data-toggle="dropdown">
                 <i class="mdi mdi-bell mx-0"></i>
@@ -53,11 +53,12 @@
                     </div>
                 </a>
             </div>
-        </li>
+        </li> --}}
         <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <img src="{{ url('images/faces/face5.jpg') }}" alt="profile" />
-                <span class="nav-profile-name">Louis Barnett</span>
+                {{ $slot }}
+                {{-- <img src="{{ url('images/faces/face5.jpg') }}" alt="profile" />
+                <span class="nav-profile-name">Louis Barnett</span> --}}
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                 <a href="{{ route('settings') }}" class="dropdown-item">

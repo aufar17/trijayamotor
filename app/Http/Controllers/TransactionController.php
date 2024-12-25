@@ -94,7 +94,7 @@ class TransactionController extends Controller
                     $stock = $r->stock;
                     $stock -= $arrQtyBarang[$r->id];
                     $r->stock = $stock;
-                    if ($r->stock < 0) $r->stock = 0;
+                if ($r->stock < 0) $r->stock = 0;
                     $r->save();
                     $jumlahHargaInventory += $arrQtyBarang[$r->id] * $r->sell;
                 }

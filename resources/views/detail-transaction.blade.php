@@ -50,6 +50,11 @@
                                 <span style="margin: 0;">:</span>
                                 <span style="font-weight: 500; margin: 0;">{{ $transactions->vehicle->nopol }}</span>
 
+                                <h6 style="font-weight: bold; margin: 0;">No. Chasis</h6>
+                                <span style="margin: 0;">:</span>
+                                <span
+                                    style="font-weight: 500; margin: 0;">{{ $transactions->vehicle->chasis_number }}</span>
+
                                 <h6 style="font-weight: bold; margin: 0;">Notes</h6>
                                 <span style="margin: 0;">:</span>
                                 <span style="font-weight: 500; margin: 0;">{{ $transactions->notes }}</span>
@@ -102,8 +107,8 @@
                             </tbody>
                             <tfoot>
                                 <tr class="text-bold">
-                                    <td class="text-center fw-bold fs-6" colspan="4">Total</td>
-                                    <td class="text-center fw-bold fs-6">{{ $transactions->TotalSpareparts }}</td>
+                                    <td class="text-center fw-bold fs-6 py-4" colspan="4">Total</td>
+                                    <td class="text-center fw-bold fs-6 py-4">{{ $transactions->TotalSpareparts }}</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -142,8 +147,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td class="text-center fw-bold fs-6" colspan="3">Total</td>
-                                    <td class="text-center fw-bold fs-6">{{ $transactions->TotalServices }}</td>
+                                    <td class="text-center fw-bold fs-6 py-4" colspan="3">Total</td>
+                                    <td class="text-center fw-bold fs-6 py-4">{{ $transactions->TotalServices }}</td>
                                 </tr>
                             </tfoot>
                         </table>

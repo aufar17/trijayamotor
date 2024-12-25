@@ -42,8 +42,8 @@
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputCode1">Customer Code</label>
-                                <input readonly name="code" type="number" class="form-control" id="exampleInputName1"
-                                    placeholder="Code" value="{{ $customer->code }}">
+                                <input readonly name="code" type="text" class="form-control"
+                                    id="exampleInputName1" placeholder="Code" value="{{ $customer->code }}">
                             </div>
                             <div class="row">
                                 <div class="col-6">
@@ -56,15 +56,14 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputPhone1">Phone</label>
-                                        <input name="phone" type="text" class="form-control" id="exampleInputPhone1"
-                                            placeholder="Phone" value="{{ $customer->phone }}">
+                                        <input name="phone" type="text" class="form-control"
+                                            id="exampleInputPhone1" placeholder="Phone" value="{{ $customer->phone }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputConfirmAddress1">Address</label>
-                                <textarea name="address" class="form-control" id="exampleTextarea1"
-                                    rows="4">{{ $customer->address }}</textarea>
+                                <textarea name="address" class="form-control" id="exampleTextarea1" rows="4">{{ $customer->address }}</textarea>
                             </div>
                             <div class="row">
                                 <div class="col-6">

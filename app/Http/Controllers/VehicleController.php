@@ -25,7 +25,7 @@ class VehicleController extends Controller
             return redirect()->route('vehicle')->with('error', 'Vehicle not found');
         }
 
-        $customers = Vehicle::all();
+        $customers = Customer::all();
 
         $data = [
             'vehicle' => $vehicle,

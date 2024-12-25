@@ -56,6 +56,7 @@
                                             <th>Merk</th>
                                             <th>Model</th>
                                             <th>Year</th>
+                                            <th>No. Chasis</th>
                                             <th>Customer</th>
                                             <th>Action</th>
                                         </tr>
@@ -96,11 +97,9 @@
                                                 <td>{{ $vehicle->merk }}</td>
                                                 <td>{{ $vehicle->model }}</td>
                                                 <td>{{ $vehicle->year }}</td>
+                                                <td>{{ $vehicle->chasis_number }}</td>
                                                 <td>{{ $vehicle->customer->name }}</td>
                                                 <td>
-                                                    <a class="btn btn-info"
-                                                        href="{{ route('detail-vehicle', ['id' => $vehicle->id]) }}"><i
-                                                            class="fa-solid fa-circle-info"></i></a>
                                                     <a class="btn btn-warning"
                                                         href="{{ route('edit-vehicle', ['id' => $vehicle->id]) }}"><i
                                                             class="fa-solid fa-pen-to-square"></i></a>

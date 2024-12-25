@@ -27,8 +27,5 @@ class Inventory extends Model
     {
         return 'Rp ' . number_format($this->attributes['sell'], 0, ',', '.');
     }
-    public function getPurchaseRupiahAttribute($value)
-    {
-        return 'Rp ' . number_format($this->attributes['purchase'], 0, ',', '.');
-    }
+    
 }

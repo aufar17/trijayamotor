@@ -44,7 +44,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputCode1">Sparepart Code</label>
-                                        <input disabled name="code" type="number" class="form-control"
+                                        <input disabled name="code" type="text" class="form-control"
                                             id="exampleInputName1" placeholder="Code"
                                             value="{{ $get_inventory->code }}">
                                     </div>

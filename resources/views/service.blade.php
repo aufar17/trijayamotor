@@ -28,6 +28,17 @@
                             </div>
                         </div>
                     </div>
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12 stretch-card">
                             <div class="card px-3 py-3" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);">
@@ -50,18 +61,45 @@
                                     </thead>
                                     <tbody>
                                         @forelse ($services as $service)
+                                            {{-- MODAL DELETE --}}
+                                            <div class="modal fade" id="deleteModal" tabindex="-1"
+                                                aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteModalLabel">Confirm
+                                                                Deletion</h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Are you sure you want to delete this sparepart?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form id="deleteForm" action="{{ route('delete-service') }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <input hidden type="text" name="id"
+                                                                    id="productId" value="{{ $service->id }}">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Cancel</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $service->code }}</td>
                                                 <td>{{ $service->name }}</td>
                                                 <td>{{ $service->description }}</td>
-                                                <td>{{ $service->price }}</td>
+                                                <td>{{ $service->PriceService }}</td>
                                                 <td>
-                                                    <a class="btn btn-info" href=""><i
-                                                            class="fa-solid fa-circle-info"></i></a>
-                                                    <a class="btn btn-warning" href=""><i
+                                                    <a class="btn btn-warning"
+                                                        href="{{ route('edit-service', ['id' => $service->id]) }}"><i
                                                             class="fa-solid fa-pen-to-square"></i></a>
-                                                    <button class="btn btn-danger" href=""><i
+                                                    <button class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#deleteModal" data-id="{{ $service->id }}"><i
                                                             class="fa-solid fa-trash"></i></button>
                                                 </td>
                                             </tr>

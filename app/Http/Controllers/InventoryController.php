@@ -20,7 +20,7 @@ class InventoryController extends Controller
 
     public function editInventory($id)
     {
-        $inventory = Inventory::with('supplier')->where('id', $id)->first();
+        $inventory = Inventory::where('id', $id)->first();
 
         if (!$inventory) {
             return redirect()->route('inventory')->with('error', 'Inventory not found');
@@ -65,11 +65,9 @@ class InventoryController extends Controller
 
         $data = [
             'code' => $inventory['code'],
-            'supplier_id' => $inventory['supplier_id'],
             'name' => $inventory['name'],
             'description' => $inventory['description'],
-            'stock' => $inventory['stock'],
-            'purchase' => $inventory['purchase'],
+            'stock' => $inventory['stock'] ?? 0,
             'sell' => $inventory['sell'],
             'location' => $inventory['location'],
         ];

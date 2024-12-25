@@ -120,11 +120,9 @@ class ApiController extends Controller
         $inventory = request()->post();
         $data = [
             'code' => $inventory['code'],
-            'supplier_id' => $inventory['supplier_id'],
             'name' => $inventory['name'],
             'description' => $inventory['description'],
             'stock' => $inventory['stock'],
-            'purchase' => $inventory['purchase'],
             'sell' => $inventory['sell'],
             'location' => $inventory['location'],
         ];
@@ -158,11 +156,9 @@ class ApiController extends Controller
 
         $data = [
             'code' => $inventory['code'],
-            'supplier_id' => $inventory['supplier_id'],
             'name' => $inventory['name'],
             'description' => $inventory['description'],
             'stock' => $inventory['stock'],
-            'purchase' => $inventory['purchase'],
             'sell' => $inventory['sell'],
             'location' => $inventory['location'],
         ];

@@ -68,9 +68,12 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $history->supplier->name }}</td>
                                         <td>{{ $history->qty }}</td>
-                                        <td>{{ $price = $history->purchase / $history->qty }}</td>
-                                        <td>{{ $history->purchase }}</td>
+                                        <td>Rp
+                                            {{ number_format($price = $history->purchase / $history->qty, 0, ',', '.') }}
+                                        </td>
+                                        <td>{{ $history->PurchaseRupiah }}</td>
                                         <td>{{ $history->supply_date }}</td>
+
                                     </tr>
                                 @empty
                                     <tr>

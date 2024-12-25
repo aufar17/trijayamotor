@@ -25,66 +25,51 @@
                             <div class="d-flex justify-content-between flex-wrap">
                                 <div class="d-flex align-items-end flex-wrap">
                                     <div class="mr-md-3 mr-xl-5">
-                                        <h2>New Customer</h2>
+                                        <h2>New Service</h2>
                                     </div>
                                     <div class="d-flex">
                                         <i class="mdi mdi-home text-muted hover-cursor"></i>
                                         <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
-                                        <p class="text-muted mb-0 hover-cursor">Customer/&nbsp;</p>
-                                        <p class="text-primary mb-0 hover-cursor">New Customer</p>
+                                        <p class="text-muted mb-0 hover-cursor">Service/&nbsp;</p>
+                                        <p class="text-primary mb-0 hover-cursor">New Service</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <x-card>
-                        <form class="forms-sample" action="{{ route('customer-post') }}" method="post">
+                        <form class="forms-sample" action="{{ route('update-service') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleInputCode1">Customer Code</label>
-                                <input name="code" type="text" class="form-control" id="exampleInputName1"
-                                    placeholder="Code">
+                                <label for="exampleInputCode1">Service Code</label>
+                                <input readonly name="code" type="text" class="form-control"
+                                    id="exampleInputName1" placeholder="Code" value="{{ $services->code }}">
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputName1">Name</label>
                                         <input name="name" type="text" class="form-control" id="exampleInputName1"
-                                            placeholder="Name">
+                                            placeholder="Name" value="{{ $services->name }}">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="exampleInputPhone1">Phone</label>
-                                        <input name="phone" type="number" class="form-control"
-                                            id="exampleInputPhone1" placeholder="Phone">
+                                        <label for="exampleInputConfirmPrice1">Price</label>
+                                        <input name="price" type="text" class="form-control"
+                                            id="exampleInputPrice1" placeholder="Price" value="{{ $services->price }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputConfirmAddress1">Address</label>
-                                <textarea name="address" class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputProvince1">Province</label>
-                                        <input name="province" type="text" class="form-control"
-                                            id="exampleInputProvince1" placeholder="Province">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputBank Account1">City</label>
-                                        <input name="cities" type="text" class="form-control" id="exampleInputCity1"
-                                            placeholder="City">
-                                    </div>
-                                </div>
+                                <label for="exampleInputConfirmDescription1">Description</label>
+                                <textarea name="description" class="form-control" id="exampleTextarea1" rows="4"> {{ $services->description }}</textarea>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-6">
+                                    <input hidden type="number" name="id" value="{{ $services->id }}">
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                    <a href="{{ route('customer') }}" class="btn btn-danger">Cancel</a>
+                                    <a href="{{ route('service') }}" class="btn btn-danger">Cancel</a>
                         </form>
                 </div>
             </div>

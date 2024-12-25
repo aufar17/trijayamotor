@@ -54,9 +54,6 @@ Route::get('detail-service/{id}', [ServiceController::class, 'serviceInventory']
 //Transaction
 Route::get('new-transaction', [TransactionController::class, 'newTransaction'])->name('new-transaction');
 Route::post('add-transaction', [TransactionController::class, 'transactionPost'])->name('transaction-post');
-Route::get('edit-transaction/{id}', [TransactionController::class, 'editTransaction'])->name('edit-transaction');
-Route::post('update-transaction', [TransactionController::class, 'transactionUpdate'])->name('update-transaction');
-Route::post('delete-transaction', [TransactionController::class, 'transactionDelete'])->name('delete-transaction');
 Route::get('detail-transaction/{id}', [TransactionController::class, 'detailTransaction'])->name('detail-transaction');
 
 //Supplier

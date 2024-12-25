@@ -42,8 +42,8 @@
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputCode1">Supplier Code</label>
-                                <input readonly name="code" type="number" class="form-control" id="exampleInputName1"
-                                    placeholder="Code" value="{{ $supplier->code }}">
+                                <input readonly name="code" type="text" class="form-control"
+                                    id="exampleInputName1" placeholder="Code" value="{{ $supplier->code }}">
                             </div>
                             <div class="row">
                                 <div class="col-4">
@@ -56,22 +56,21 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email</label>
-                                        <input name="email" type="email" class="form-control" id="exampleInputEmail1"
-                                            placeholder="Email" value="{{ $supplier->email }}">
+                                        <input name="email" type="email" class="form-control"
+                                            id="exampleInputEmail1" placeholder="Email" value="{{ $supplier->email }}">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="exampleInputPhone1">Phone</label>
-                                        <input name="phone" type="text" class="form-control" id="exampleInputPhone1"
-                                            placeholder="Phone" value="{{ $supplier->phone }}">
+                                        <input name="phone" type="text" class="form-control"
+                                            id="exampleInputPhone1" placeholder="Phone" value="{{ $supplier->phone }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputConfirmAddress1">Address</label>
-                                <textarea name="address" class="form-control" id="exampleTextarea1"
-                                    rows="4">{{ $supplier->address }}</textarea>
+                                <textarea name="address" class="form-control" id="exampleTextarea1" rows="4">{{ $supplier->address }}</textarea>
                             </div>
                             <div class="row">
                                 <div class="col-6">

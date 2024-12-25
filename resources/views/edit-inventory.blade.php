@@ -41,56 +41,32 @@
                         <form class="forms-sample" action="{{ route('update-inventory') }}" method="post">
                             @csrf
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12">
                                     <div class="form-group">
                                         <label for="exampleInputCode1">Sparepart Code</label>
-                                        <input name="code" type="number" class="form-control" id="exampleInputName1"
+                                        <input name="code" type="text" class="form-control" id="exampleInputName1"
                                             placeholder="Code" value="{{ $inventory->code }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect2">Supplier</label>
-                                        <select class="form-control" id="exampleFormControlSelect2" name="supplier_id"
-                                            required>
-                                            <option value="" disabled>Pilih Supplier</option>
-                                            @foreach ($suppliers as $supplier)
-                                            <option value="{{ $supplier->id }}" {{ $inventory->supplier_id ==
-                                                $supplier->id ? 'selected' : '' }}>
-                                                {{ $supplier->code }} - {{ $supplier->name }}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                        <i class="fas fa-chevron-down position-absolute"
-                                            style="top: 50%; right: 1rem; transform: translateY(-50%); pointer-events: none;margin-right:10px"></i>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12">
                                     <div class="form-group">
                                         <label for="exampleInputName1">Name</label>
                                         <input name="name" type="text" class="form-control" id="exampleInputName1"
                                             placeholder="Name" value="{{ $inventory->name }}" required>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputStock1">Stock</label>
-                                        <input name="stock" type="number" class="form-control" id="exampleInputStock1"
-                                            placeholder="Stock" value="{{ $inventory->stock }}" required>
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="exampleInputConfirmPurchase1">Purchase</label>
-                                        <input name="purchase" type="number" class="form-control"
-                                            id="exampleInputPurchase1" placeholder="Purchase"
-                                            value="{{ $inventory->purchase }}" required>
+                                        <label for="exampleInputConfirmLocation1">Location</label>
+                                        <input name="location" type="text" class="form-control"
+                                            id="exampleInputLocation1" placeholder="Location"
+                                            value="{{ $inventory->location }}" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -104,14 +80,9 @@
 
                             <div class="form-group">
                                 <label for="exampleInputConfirmDescription1">Description</label>
-                                <textarea name="description" class="form-control" id="exampleTextarea1" rows="4"
-                                    required>{{ $inventory->description }}</textarea>
+                                <textarea name="description" class="form-control" id="exampleTextarea1" rows="4" required>{{ $inventory->description }}</textarea>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputConfirmLocation1">Location</label>
-                                <input name="location" type="text" class="form-control" id="exampleInputLocation1"
-                                    placeholder="Location" value="{{ $inventory->location }}" required>
-                            </div>
+
 
                             <div class="row mt-3">
                                 <div class="col-6">
@@ -132,31 +103,25 @@
     </div>
     </div>
 
-    <!-- plugins:js -->
-    <script src="{{ url('vendors/base/vendor.bundle.base.js') }}"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page-->
-    <script src="{{ url('vendors/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ url('vendors/datatables.net/jquery.dataTables.js') }}"></script>
-    <script src="{{ url('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
-    <!-- End plugin js for this page-->
-    <!-- inject:js -->
-    <script src="{{ url('js/off-canvas.js') }}"></script>
-    <script src="{{ url('js/hoverable-collapse.js') }}"></script>
-    <script src="{{ url('js/template.js') }}"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page-->
-    <script src="{{ url('js/dashboard.js') }}"></script>
-    <script src="{{ url('js/data-table.js') }}"></script>
-    <script src="{{ url('js/jquery.dataTables.js') }}"></script>
-    <script src="{{ url('js/dataTables.bootstrap4.js') }}"></script>
+    <script src="vendors/base/vendor.bundle.base.js"></script>
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/data-table.js"></script>
+    <script src="js/jquery.dataTables.js"></script>
+    <script src="js/dataTables.bootstrap4.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-    });
+            $('#example').DataTable();
+        });
     </script>
 
 

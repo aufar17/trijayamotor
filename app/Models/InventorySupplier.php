@@ -25,4 +25,9 @@ class InventorySupplier extends Model
     {
         return $this->belongsTo(Inventory::class, 'inventory_id', 'id');
     }
+
+    public function getPurchaseRupiahAttribute($value)
+    {
+        return 'Rp ' . number_format($this->attributes['purchase'], 0, ',', '.');
+    }
 }

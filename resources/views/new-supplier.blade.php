@@ -42,7 +42,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputCode1">Supplier Code</label>
-                                <input name="code" type="number" class="form-control" id="exampleInputName1"
+                                <input name="code" type="text" class="form-control" id="exampleInputName1"
                                     placeholder="Code">
                             </div>
                             <div class="row">
@@ -56,15 +56,15 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email</label>
-                                        <input name="email" type="email" class="form-control" id="exampleInputEmail1"
-                                            placeholder="Email">
+                                        <input name="email" type="email" class="form-control"
+                                            id="exampleInputEmail1" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="exampleInputPhone1">Phone</label>
-                                        <input name="phone" type="text" class="form-control" id="exampleInputPhone1"
-                                            placeholder="Phone">
+                                        <input name="phone" type="text" class="form-control"
+                                            id="exampleInputPhone1" placeholder="Phone">
                                     </div>
                                 </div>
                             </div>

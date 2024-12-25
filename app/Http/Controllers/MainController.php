@@ -85,8 +85,10 @@ class MainController extends Controller
     public function settings()
     {
         $users = User::all();
+        $user = session('user');
         $data = [
-            'users' => $users
+            'users' => $users,
+            'userSession' => $user
         ];
 
         return view('settings',$data);

@@ -82,4 +82,5 @@ Route::post('delete-vehicle', [VehicleController::class, 'vehicleDelete'])->name
 
 //Setting
 Route::post('settings/create-user', [SettingsController::class, 'createUser'])->name('create-user');
+Route::post('settings/change-password', [SettingsController::class, 'changePassword'])->name('change-password');
 Route::post('settings/delete-user', [SettingsController::class, 'userDelete'])->name('delete-user');

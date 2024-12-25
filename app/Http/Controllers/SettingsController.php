@@ -24,6 +24,24 @@ class SettingsController extends Controller
         return redirect()->route('settings', ['tab' => 'create-user'])->with('success', 'User created successfully');
     }
 
+    public function changePassword(){
+        $params = request()->post();
+        try {
+            $session = session('user');
+            !$session && throw new \Exception();
+
+            $user = User::where('id',$session->id)->first();
+            !$user && throw new \Exception();
+
+            $user->password = $params['password'];
+            $user->save();
+        } catch (\Throwable $th) {
+            return redirect()->route('settings', ['tab' => 'change-password'])->with('error', 'User failed to create');
+        }
+    
+        return redirect()->route('settings', ['tab' => 'change-password'])->with('success', 'Password has been changed');
+    }
+
     public function userDelete()
     {
         $id = request()->post('id');

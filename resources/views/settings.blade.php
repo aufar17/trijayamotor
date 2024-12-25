@@ -75,21 +75,24 @@
                                     <div class="tab-content py-0 px-0">
                                         <div class="tab-pane fade show px-5 py-4 {{ request('tab') === null || request('tab') === 'change-password' ? 'active' : '' }}"
                                             id="change-password" role="tabpanel" aria-labelledby="change-password-tab">
-                                            <form class="forms-sample" action="" method="post" autocomplete="off">
+                                            <form class="forms-sample" action="{{ route('change-password') }}"
+                                                method="post" autocomplete="off">
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="username">Username</label>
                                                             <input name="username" type="text" class="form-control"
-                                                                id="username" placeholder="Username">
+                                                                id="username" placeholder="Username"
+                                                                value="{{ $userSession->username ?? '-' }}" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="password">Password</label>
-                                                            <input name="password" type="text" class="form-control"
-                                                                id="password" placeholder="Password">
+                                                            <input name="password" type="password" name="password"
+                                                                class="form-control" id="password"
+                                                                placeholder="Password">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -97,8 +100,7 @@
                                                     <div class="col-6">
                                                         <button type="submit"
                                                             class="btn btn-primary mr-2">Submit</button>
-                                                        <a href="{{ route('inventory') }}"
-                                                            class="btn btn-danger">Cancel</a>
+
                                                     </div>
                                                 </div>
                                             </form>
@@ -138,6 +140,7 @@
                                                     <div class="col-6">
                                                         <button type="submit"
                                                             class="btn btn-primary mr-2">Submit</button>
+                                                        <button type="reset" class="btn btn-danger">Cancel</button>
                                                     </div>
                                                 </div>
                                             </form>

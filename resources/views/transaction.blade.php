@@ -73,6 +73,9 @@
                                                     <a class="btn btn-info"
                                                         href="{{ route('detail-transaction', ['id' => $transaction->id]) }}"><i
                                                             class="fa-solid fa-circle-info"></i></a>
+                                                    <a class="btn btn-warning"
+                                                        href="{{ route('invoice', ['id' => $transaction->id]) }}"><i
+                                                            class="fa-solid fa-print"></i></a>
                                                 </td>
                                             </tr>
                                         @empty

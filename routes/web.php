@@ -56,7 +56,7 @@ Route::post('delete-service', [ServiceController::class, 'serviceDelete'])->name
 Route::get('new-transaction', [TransactionController::class, 'newTransaction'])->name('new-transaction');
 Route::post('add-transaction', [TransactionController::class, 'transactionPost'])->name('transaction-post');
 Route::get('detail-transaction/{id}', [TransactionController::class, 'detailTransaction'])->name('detail-transaction');
-Route::get('invoice', [TransactionController::class, 'invoice'])->name('invoice');
+Route::get('invoice/{id}', [TransactionController::class, 'invoice'])->name('invoice');
 
 //Supplier
 Route::get('new-supplier', [SupplierController::class, 'newSupplier'])->name('new-supplier');

@@ -52,14 +52,27 @@ class TransactionController extends Controller
             return redirect()->route('transaction')->with('error', 'No supply history');
         }
 
-       
-
-
         $data = [
             'transactions' => $transactions,
         ];
         return view('detail-transaction', $data);
     }
+
+    public function invoice($id)
+    {
+        $transactions = Transaction::with(['vehicle','vehicle.customer','transactionInventory','transactionInventory.inventory','transactionService','transactionService.service'])->where('id', $id)->first();
+        if (!$transactions) {
+            return redirect()->route('transaction')->with('error', 'No supply history');
+        }
+
+        $data = [
+            'transactions' => $transactions,
+        ];
+        // dd($data);
+        return view('invoice', $data);
+    }
+
+    
 
     public function transactionPost()
     {

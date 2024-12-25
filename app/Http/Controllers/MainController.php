@@ -80,5 +80,15 @@ class MainController extends Controller
         ];
 
         return view('vehicle', $data);
+    
+    }
+    public function settings()
+    {
+        $users = User::all();
+        $data = [
+            'users' => $users
+        ];
+
+        return view('settings',$data);
     }
 }

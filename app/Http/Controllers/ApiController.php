@@ -56,9 +56,9 @@ class ApiController extends Controller
 
     public function newInventory()
     {
-        $suppliers = Supplier::all();
+        $inventory = Inventory::all();
         $data = [
-            'suppliers' => $suppliers
+            'inventory' => $inventory
         ];
 
         $res = [
@@ -72,17 +72,15 @@ class ApiController extends Controller
 
     public function editInventory($id)
     {
-        $inventory = Inventory::with('supplier')->where('id', $id)->first();
+        $inventory = Inventory::where('id', $id)->first();
 
         if (!$inventory) {
             return redirect()->route('inventory')->with('error', 'Inventory not found');
         }
 
-        $suppliers = Supplier::all();
 
         $data = [
             'inventory' => $inventory,
-            'suppliers' => $suppliers,
         ];
 
         $res = [
@@ -183,27 +181,28 @@ class ApiController extends Controller
         return response()->json($success)->with('success', 'Sparepart updated successfully');
     }
 
-    public function inventoryDelete()
-    {
-        $id = request()->post('id');
-        $inventory = Inventory::where('id', $id)->first();
+    public function inventoryDelete($id)
+{
+    // Validate if inventory exists
+    $inventory = Inventory::find($id); // Use find() directly since it's by primary key
 
-        $failed = [
+    // Response for item not found
+    if (!$inventory) {
+        return response()->json([
             'responseCode' => 0,
             'responseDesc' => 'Id not found',
-        ];
-
-        if (!$inventory) {
-            return response()->json($failed);
-        }
-
-        $inventory->delete();
-
-        $success = [
-            'responseCode' => 1,
-            'responseDesc' => 'Inventory deleted successfully',
-        ];
-
-        return response()->json($success);
+        ]);
     }
+
+    // Delete the inventory item
+    $inventory->delete();
+
+    // Return success response
+    return response()->json([
+        'responseCode' => 1,
+        'responseDesc' => 'Inventory deleted successfully',
+    ]);
+}
+
+
 }

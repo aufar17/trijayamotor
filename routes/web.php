@@ -7,6 +7,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\VehicleController;
@@ -23,9 +24,10 @@ Route::get('service', [MainController::class, 'service'])->name('service');
 Route::get('supplier', [MainController::class, 'supplier'])->name('supplier');
 Route::get('customer', [MainController::class, 'customer'])->name('customer');
 Route::get('vehicle', [MainController::class, 'vehicle'])->name('vehicle');
+Route::get('settings', [MainController::class, 'settings'])->name('settings');
 
 
-//User
+//Login
 Route::post('login-process', [LoginController::class, 'loginProcess'])->name('login-process');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -48,13 +50,13 @@ Route::post('add-service', [ServiceController::class, 'ServicePost'])->name('ser
 Route::get('edit-service/{id}', [ServiceController::class, 'editService'])->name('edit-service');
 Route::post('update-service', [ServiceController::class, 'serviceUpdate'])->name('update-service');
 Route::post('delete-service', [ServiceController::class, 'serviceDelete'])->name('delete-service');
-Route::get('detail-service/{id}', [ServiceController::class, 'serviceInventory'])->name('detail-service');
 
 
 //Transaction
 Route::get('new-transaction', [TransactionController::class, 'newTransaction'])->name('new-transaction');
 Route::post('add-transaction', [TransactionController::class, 'transactionPost'])->name('transaction-post');
 Route::get('detail-transaction/{id}', [TransactionController::class, 'detailTransaction'])->name('detail-transaction');
+Route::get('invoice', [TransactionController::class, 'invoice'])->name('invoice');
 
 //Supplier
 Route::get('new-supplier', [SupplierController::class, 'newSupplier'])->name('new-supplier');
@@ -70,7 +72,6 @@ Route::post('add-customer', [CustomerController::class, 'customerPost'])->name('
 Route::get('edit-customer/{id}', [CustomerController::class, 'editCustomer'])->name('edit-customer');
 Route::post('update-customer', [CustomerController::class, 'customerUpdate'])->name('update-customer');
 Route::post('delete-customer', [CustomerController::class, 'customerDelete'])->name('delete-customer');
-Route::get('detail-customer/{id}', [CustomerController::class, 'detailCustomer'])->name('detail-customer');
 
 //Vehicle
 Route::get('new-vehicle', [VehicleController::class, 'newVehicle'])->name('new-vehicle');
@@ -78,4 +79,7 @@ Route::post('add-vehicle', [VehicleController::class, 'vehiclePost'])->name('veh
 Route::get('edit-vehicle/{id}', [VehicleController::class, 'editVehicle'])->name('edit-vehicle');
 Route::post('update-vehicle', [VehicleController::class, 'vehicleUpdate'])->name('update-vehicle');
 Route::post('delete-vehicle', [VehicleController::class, 'vehicleDelete'])->name('delete-vehicle');
-Route::get('detail-vehicle/{id}', [VehicleController::class, 'detailVehicle'])->name('detail-vehicle');
+
+//Setting
+Route::post('settings/create-user', [SettingsController::class, 'createUser'])->name('create-user');
+Route::post('settings/delete-user', [SettingsController::class, 'userDelete'])->name('delete-user');

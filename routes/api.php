@@ -15,6 +15,6 @@ Route::get('edit-inventory/{id}', [ApiController::class, 'editInventory'])->name
 
 Route::post('update-inventory', [ApiController::class, 'inventoryUpdate'])->name('update-inventory');
 
-Route::post('delete-inventory', [ApiController::class, 'inventoryDelete'])->name('delete-inventory');
+Route::post('delete-inventory/{id}', [ApiController::class, 'inventoryDelete'])->name('delete-inventory');
 
 Route::get('detail-inventory/{id}', [ApiController::class, 'detailInventory'])->name('detail-inventory');

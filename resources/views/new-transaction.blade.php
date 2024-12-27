@@ -117,68 +117,113 @@
 
     <script src="vendors/base/vendor.bundle.base.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Modal HTML -->
+    <div class="modal fade" id="stockModal" tabindex="-1" role="dialog" aria-labelledby="stockModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="stockModalLabel">Insufficient Stock</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalMessage">
+                    <!-- Dynamic message will go here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function() {
             let sparepartCount = 0;
             let serviceCount = 0;
 
+            // Tambahkan sparepart
             $('#addSparepartButton').click(function() {
                 sparepartCount++;
                 const sparepartHTML = `
-            <div class="form-group row mt-3" id="sparepart-${sparepartCount}">
-                <div class="col-8">
-                    <div class="form-group position-relative">
-                        <label for="sparepartSelect-${sparepartCount}">Spareparts</label>
-                        <select class="form-control sparepart-select" id="sparepartSelect-${sparepartCount}" name="inventory_id[]" required>
-                            <option value="" selected disabled>Choose Spareparts</option>
-                            @foreach ($inventories as $inventory)
-                                <option value="{{ $inventory->id }}" data-price="{{ $inventory->sell_price }}">
-                                    {{ $inventory->code }} - {{ $inventory->name }}
-                                </option>
-                            @endforeach
-                        </select>
+                <div class="form-group row mt-3" id="sparepart-${sparepartCount}">
+                    <div class="col-8">
+                        <div class="form-group position-relative">
+                            <label for="sparepartSelect-${sparepartCount}">Spareparts</label>
+                            <select class="form-control sparepart-select" id="sparepartSelect-${sparepartCount}" name="inventory_id[]" data-index="${sparepartCount}" required>
+                                <option value="" selected disabled>Choose Spareparts</option>
+                                @foreach ($inventories as $inventory)
+                                    <option value="{{ $inventory->id }}" data-price="{{ $inventory->sell_price }}" data-stock="{{ $inventory->stock }}">
+                                        {{ $inventory->code }} - {{ $inventory->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <label for="sparepartQty-${sparepartCount}">Quantity</label>
+                        <input type="number" class="form-control" id="sparepartQty-${sparepartCount}" name="qty[]" placeholder="Qty">
+                    </div>
+                    <div class="col-1">
+                        <label>Action</label>
+                        <button type="button" class="btn btn-danger btn-block" onclick="removeSparepart(${sparepartCount})"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
-                <div class="col-3">
-                    <label for="sparepartQty-${sparepartCount}">Quantity</label>
-                    <input type="number" class="form-control" id="sparepartQty-${sparepartCount}" name="qty[]" placeholder="Qty">
-                </div>
-                <div class="col-1">
-                    <label>Action</label>
-                    <button type="button" class="btn btn-danger btn-block" onclick="removeSparepart(${sparepartCount})"><i class="fa-solid fa-trash"></i></button>
-                </div>
-            </div>
-        `;
+            `;
                 $('#sparepartContainer').append(sparepartHTML);
             });
 
+            // Tambahkan service
             $('#addServiceButton').click(function() {
                 serviceCount++;
                 const serviceHTML = `
-            <div class="form-group row mt-3" id="service-${serviceCount}">
-                <div class="col-11">
-                    <div class="form-group position-relative">
-                        <label for="serviceSelect-${serviceCount}">Services</label>
-                        <select class="form-control service-select" id="serviceSelect-${serviceCount}" name="service_id[]" required>
-                            <option value="" selected disabled>Choose Services</option>
-                            @foreach ($services as $service)
-                                <option value="{{ $service->id }}" data-price="{{ $service->price }}">
-                                    {{ $service->code }} - {{ $service->name }}
-                                </option>
-                            @endforeach
-                        </select>
+                <div class="form-group row mt-3" id="service-${serviceCount}">
+                    <div class="col-11">
+                        <div class="form-group position-relative">
+                            <label for="serviceSelect-${serviceCount}">Services</label>
+                            <select class="form-control service-select" id="serviceSelect-${serviceCount}" name="service_id[]" required>
+                                <option value="" selected disabled>Choose Services</option>
+                                @foreach ($services as $service)
+                                    <option value="{{ $service->id }}" data-price="{{ $service->price }}">
+                                        {{ $service->code }} - {{ $service->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <label>Action</label>
+                        <button type="button" class="btn btn-danger btn-block" onclick="removeService(${serviceCount})"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
-                <div class="col-1">
-                    <label>Action</label>
-                    <button type="button" class="btn btn-danger btn-block" onclick="removeService(${serviceCount})"><i class="fa-solid fa-trash"></i></button>
-                </div>
-            </div>
-        `;
+            `;
                 $('#serviceContainer').append(serviceHTML);
             });
 
+            // Pengecekan stok sebelum submit form
+            $('form').submit(function(event) {
+                let isValid = true;
+                // Cek semua sparepart yang ditambahkan
+                $('select[name="inventory_id[]"]').each(function() {
+                    const selectedOption = $(this).find('option:selected');
+                    const availableStock = parseInt(selectedOption.data(
+                        'stock')); // Ambil stok dari data-stock
+                    const qty = parseInt($('#sparepartQty-' + $(this).data('index'))
+                        .val()); // Ambil quantity dari input
 
+                    if (qty > availableStock) {
+                        alert('Stock tidak mencukupi untuk barang ' + selectedOption.text());
+                        isValid = false;
+                        return false; // Hentikan pengecekan lebih lanjut
+                    }
+                });
+
+                if (!isValid) {
+                    event.preventDefault(); // Cegah form submit jika stok tidak mencukupi
+                }
+            });
         });
 
         function removeSparepart(id) {

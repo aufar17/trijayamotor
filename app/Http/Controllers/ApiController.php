@@ -7,6 +7,7 @@ use App\Models\Supplier;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class ApiController extends Controller
@@ -120,7 +121,7 @@ class ApiController extends Controller
             'code' => $inventory['code'],
             'name' => $inventory['name'],
             'description' => $inventory['description'],
-            'stock' => $inventory['stock'],
+            'stock' => $inventory['stock'] ?? 0,
             'sell' => $inventory['sell'],
             'location' => $inventory['location'],
         ];
@@ -145,48 +146,47 @@ class ApiController extends Controller
     }
 
     public function inventoryUpdate()
-    {
-        $inventory = request()->post();
-        if (!isset($inventory['id'])) {
-            return redirect()->back()->with('error', 'Inventory ID is missing');
-        }
+{
+    $inventory = request()->post();
+    Log::info("Received inventory data: ", $inventory); // Log the incoming data
 
+    if (!isset($inventory['id'])) {
+        return response()->json([
+            'responseCode' => 0,
+            'responseDesc' => 'Inventory ID is missing'
+        ]);
+    }
 
-        $data = [
-            'code' => $inventory['code'],
-            'name' => $inventory['name'],
-            'description' => $inventory['description'],
-            'stock' => $inventory['stock'],
-            'sell' => $inventory['sell'],
-            'location' => $inventory['location'],
-        ];
+    $data = [
+        'code' => $inventory['code'],
+        'name' => $inventory['name'],
+        'description' => $inventory['description'],
+        'stock' => $inventory['stock'] ?? 0,
+        'sell' => $inventory['sell'],
+        'location' => $inventory['location'],
+    ];
 
-        $failed = [
+    $res = Inventory::where('id', $inventory['id'])->update($data);
+
+    if (!$res) {
+        return response()->json([
             'responseCode' => 0,
             'responseDesc' => 'Failed to update Inventory',
-        ];
-
-        $res = Inventory::where('id', $inventory['id'])->update($data);
-
-        if (!$res) {
-            return response()->json($failed);
-        }
-
-        $success = [
-            'responseCode' => 1,
-            'responseDesc' => 'Inventory updated successfully',
-            'responseData' => [$res]
-        ];
-
-        return response()->json($success)->with('success', 'Sparepart updated successfully');
+        ]);
     }
+
+    return response()->json([
+        'responseCode' => 1,
+        'responseDesc' => 'Inventory updated successfully',
+        'responseData' => [$data]
+    ]);
+}
+
 
     public function inventoryDelete($id)
 {
-    // Validate if inventory exists
-    $inventory = Inventory::find($id); // Use find() directly since it's by primary key
+    $inventory = Inventory::find($id); 
 
-    // Response for item not found
     if (!$inventory) {
         return response()->json([
             'responseCode' => 0,
@@ -194,10 +194,8 @@ class ApiController extends Controller
         ]);
     }
 
-    // Delete the inventory item
     $inventory->delete();
 
-    // Return success response
     return response()->json([
         'responseCode' => 1,
         'responseDesc' => 'Inventory deleted successfully',

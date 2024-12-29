@@ -75,67 +75,88 @@ class TransactionController extends Controller
     
 
     public function transactionPost()
-{
-    $params = request()->post();
-    try {
-        DB::beginTransaction();
-        $vehicles = Vehicle::where('id', $params['vehicle_id'])->first();
-        if (!$vehicles) {
-            return redirect()->route('new-transaction')->with('error', 'Data vehicles dengan ID ' . $params['vehicle_id'] . ' tidak ditemukan');
-        }
-
-        $jumlahHargaInventory = 0;
-        if ($params['inventory_id'] ?? null) {
-            $arrQtyBarang = [];
-            foreach (($params['inventory_id'] ?? []) as $i => $r) {
-                $arrQtyBarang[$r] = $params['qty'][$i];
+    {
+        $params = request()->post();
+        try {
+            DB::beginTransaction();
+            $vehicles = Vehicle::where('id', $params['vehicle_id'])->first();
+            if (!$vehicles) {
+                return redirect()->route('new-transaction')->with('error', 'Data vehicles dengan ID ' . $params['vehicle_id'] . ' tidak ditemukan');
             }
-            $arrInventory = Inventory::whereIn('id', $params['inventory_id'])->get();
-            foreach ($arrInventory ?? [] as $r) {
-                $stock = $r->stock;
-                $requiredQty = $arrQtyBarang[$r->id];
-                if ($requiredQty > $stock) {
-                    return redirect()->route('new-transaction')->with('error', 'Stock untuk ' . $r->name . ' tidak mencukupi.');
+            $jumlahHargaInventory = 0;
+            if ($params['inventory_id'] ?? null) {
+                $arrQtyBarang = [];
+                foreach (($params['inventory_id'] ?? []) as $i => $r) {
+                    $arrQtyBarang[$r] = $params['qty'][$i];
                 }
-                $r->stock -= $requiredQty;
+                $arrInventory = Inventory::whereIn('id', $params['inventory_id'])->get();
+                foreach ($arrInventory ?? [] as $r) {
+                    $stock = $r->stock;
+                    $stock -= $arrQtyBarang[$r->id];
+                    $r->stock = $stock;
                 if ($r->stock < 0) $r->stock = 0;
-                $r->save();
-                $jumlahHargaInventory += $requiredQty * $r->sell;
+                    $r->save();
+                    $jumlahHargaInventory += $arrQtyBarang[$r->id] * $r->sell;
+                }
             }
+            
+            $jumlahHargaJasa = 0;
+            if ($params['service_id'] ?? null) {
+                $arrService = Service::whereIn('id', $params['service_id'])->get();
+                foreach ($arrService ?? [] as $r) {
+                    $jumlahHargaJasa += $r->price;
+                }
+            }
+
+            $total = $jumlahHargaInventory + $jumlahHargaJasa;
+
+            $dataTransaksi = [
+                'code' => $params['code'],
+                'vehicle_id' => $params['vehicle_id'],
+                'date' => $params['date'],
+                'total' => $total,
+                'total_spareparts' => $jumlahHargaInventory,
+                'total_services' => $jumlahHargaJasa,
+                'notes' =>  $params['notes'],
+            ];
+
+            $transaksi = new Transaction($dataTransaksi);
+            $transaksi->save();
+
+            if (!empty($arrInventory)) {
+                foreach ($arrInventory as $r) {
+                    ($dataTransactionInventory  = [
+                        'inventory_id' => $r['id'],
+                        'qty' => $arrQtyBarang[$r->id],
+                        'transaction_id' => $transaksi['id'],
+                    ]);
+
+                    $transactionInventory = new TransactionInventory($dataTransactionInventory);
+                    $transactionInventory->save();
+                }
+            }
+
+            if (!empty($arrService)) {
+                foreach ($arrService as $r) {
+                    ($dataTransactionService  = [
+                        'service_id' => $r['id'],
+                        'transaction_id' => $transaksi['id'],
+                    ]);
+
+                    $transactionService = new TransactionService($dataTransactionService);
+                    $transactionService->save();
+                }
+            }
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th);
+            return redirect('new-transaction')->with('error','Cannot make transaction');
         }
 
-        $jumlahHargaJasa = 0;
-        if ($params['service_id'] ?? null) {
-            $arrService = Service::whereIn('id', $params['service_id'])->get();
-            foreach ($arrService ?? [] as $r) {
-                $jumlahHargaJasa += $r->price;
-            }
-        }
-
-        $total = $jumlahHargaInventory + $jumlahHargaJasa;
-
-        $dataTransaksi = [
-            'code' => $params['code'],
-            'vehicle_id' => $params['vehicle_id'],
-            'date' => $params['date'],
-            'total' => $total,
-            'total_spareparts' => $jumlahHargaInventory,
-            'total_services' => $jumlahHargaJasa,
-            'notes' =>  $params['notes'],
-        ];
-
-        $transaksi = new Transaction($dataTransaksi);
-        $transaksi->save();
-
-        DB::commit();
-    } catch (\Throwable $th) {
-        DB::rollBack();
-        return redirect('new-transaction')->with('error', 'Tidak dapat membuat transaksi.');
+        return redirect('transaction')->with('success', 'Transaction created successfully');
     }
-
-    return redirect('transaction')->with('success', 'Transaction created successfully');
-}
-
 
     
 }

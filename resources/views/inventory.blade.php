@@ -93,7 +93,14 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $inventory->code }}</td>
                                                 <td>{{ $inventory->name }}</td>
-                                                <td>{{ $inventory->stock }}</td>
+                                                <td>
+                                                    {{ $inventory->stock }}
+                                                    @if ($inventory->stock < 10)
+                                                        <span class="badge bg-danger text-white">Low
+                                                        </span>
+                                                    @endif
+                                                </td>
+
                                                 <td>{{ $inventory->SellRupiah }}</td>
                                                 <td>{{ $inventory->location }}</td>
                                                 <td>
